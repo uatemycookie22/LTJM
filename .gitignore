@@ -1,3 +1,10 @@
 .DS_Store
 **/.vscode/**
 *.meta
+**/6000FlatButtonIcon/**
+**/Library/**
+**/Logs/**
+**/Temp/**
+Assembly-CSharp.csproj
+Logs/**
+**/.dwlt
