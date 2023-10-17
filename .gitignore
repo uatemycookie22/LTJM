@@ -6,5 +6,5 @@
 **/Logs/**
 **/Temp/**
 Assembly-CSharp.csproj
-Logs/**
+**/Logs/**
 **/.dwlt
