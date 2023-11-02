@@ -54,6 +54,7 @@ public class MainMenu : MonoBehaviour
         creditStyle.fontSize = Screen.width / 17;
         coinGraphic.alignment = TextAnchor.MiddleCenter;
         coinGraphic.fontSize = Screen.width / 25;
+        settingsButton.alignment = TextAnchor.UpperRight;
     }
 
     // Update is called once per frame
@@ -80,23 +81,23 @@ public class MainMenu : MonoBehaviour
         {
             GUI.Box(new Rect(Screen.width / 10, Screen.width / 10, Screen.width / 10 * 8, Screen.width / 10 * 8), "ROCKET\nRUN", titleLogo);
             
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 13 * 1), Screen.width / 2, Screen.height / 15), "PLAY", playButton))
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 1), Screen.width / 2, Screen.height / 15), "PLAY", playButton))
             {
                 currMenu = "INGAME";
             }
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 13 * 2), Screen.width / 2, Screen.height / 15), "SHOP", shopButton))
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 2), Screen.width / 2, Screen.height / 15), "SHOP", shopButton))
             {
                 currMenu = "SHOP";
             }
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 13 * 3), Screen.width / 2, Screen.height / 15), "SETTINGS", profileButton))
+            if (GUI.Button(new Rect(Screen.width - Screen.width / 8 - 10, 10, Screen.width / 8, Screen.width / 8), "", settingsButton))
             {
                 currMenu = "SETTINGS";
             }
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 13 * 4), Screen.width / 2, Screen.height / 15), "INSTRUCTIONS", instructionsButton))
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 3), Screen.width / 2, Screen.height / 15), "INSTRUCTIONS", instructionsButton))
             {
                 currMenu = "INSTRUCTIONS";
             }
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 13 * 5), Screen.width / 2, Screen.height / 15), "LEADERBOARD", scoreButton))
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 4), Screen.width / 2, Screen.height / 15), "LEADERBOARD", scoreButton))
             {
                 currMenu = "LEADERBOARD";
             }
@@ -206,7 +207,7 @@ public class MainMenu : MonoBehaviour
 
             //Volume Control slider
             volumeSlider = GUI.HorizontalSlider(new Rect(Screen.width / 4, (Screen.height / (settingsCount * 2 + 1)) * 3, Screen.width / 2, Screen.height / (settingsCount * 2)), volumeSlider, 0.0f, 1.0f);
-            GUI.Label(new Rect(Screen.width/4, (Screen.height / (settingsCount * 2 + 1)) * 3 - 30, 200, 20), "Slider Value: " + volumeSlider.ToString("F2"));
+            GUI.Label(new Rect(Screen.width/4, (Screen.height / (settingsCount * 2 + 1)) * 3 - 30, 200, 50), "Slider Value: " + volumeSlider.ToString("F2"));
 
             //Language accessibility
             if (GUI.Button(new Rect(Screen.width / 4, (Screen.height / (settingsCount * 2 + 1)) * 5, Screen.width / 2, Screen.height / (settingsCount * 2)), "Language: English", defaultStyle))
