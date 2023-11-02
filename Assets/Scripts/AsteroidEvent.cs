@@ -2,24 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinEvent : MonoBehaviour
+public class AsteroidEvent : MonoBehaviour
 {
 
-    public int coinAmount = 1;
+    public float damageAmount = 50;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.name = "Coin";
+        gameObject.name = "Asteroid";
     }
 
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "Player")
+        if(col.tag == "Player")
         {
             //When the event hits the player: do something
-            GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().addCoin(coinAmount);
+            //decrement from fuel based on damageAmount
+            GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().fuelRemaining -= damageAmount; //handle a shield?
             Destroy(gameObject);
         }
     }
