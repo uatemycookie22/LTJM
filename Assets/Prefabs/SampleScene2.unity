@@ -279,8 +279,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 11
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -305,7 +305,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 7.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -323,13 +323,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc7eb5ed135608143ad095c2f08a3165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderStyle: {fileID: 0}
+  sliderStyle: {fileID: 11400000, guid: af0a5ad294a044fe19ace5776f537e27, type: 2}
   defaultStyle:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 7eb32b0ed32787048af34bb691682534, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -381,7 +381,7 @@ MonoBehaviour:
     m_Font: {fileID: 0}
     m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 0
+    m_Alignment: 4
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -461,7 +461,7 @@ MonoBehaviour:
   titleLogo:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 7eb32b0ed32787048af34bb691682534, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0.8862746, g: 1, b: 1, a: 1}
     m_Hover:
@@ -512,8 +512,8 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: 0c3d75cbcbbec014aa27d5d6edd9e8c5, type: 3}
-    m_FontSize: 128
+    m_Font: {fileID: 0}
+    m_FontSize: 100
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
@@ -528,7 +528,7 @@ MonoBehaviour:
   playButton:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 45ce4e6f7ed6997439df3c99af56f9e5, type: 3}
+      m_Background: {fileID: 2800000, guid: 7eb32b0ed32787048af34bb691682534, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0.80392164, g: 0.8941177, b: 0.8980393, a: 1}
     m_Hover:
@@ -579,7 +579,7 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: 4476052d4d729eb49a5fa0e8c5daaeee, type: 3}
+    m_Font: {fileID: 0}
     m_FontSize: 50
     m_FontStyle: 0
     m_Alignment: 4
@@ -649,7 +649,7 @@ MonoBehaviour:
     m_Font: {fileID: 0}
     m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 0
+    m_Alignment: 4
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -657,7 +657,7 @@ MonoBehaviour:
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
     m_FixedHeight: 0
-    m_StretchWidth: 1
+    m_StretchWidth: 0
     m_StretchHeight: 0
   profileButton:
     m_Name: 
@@ -863,7 +863,7 @@ MonoBehaviour:
   backButton:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 175e5206ffa17314e832498c8866db5d, type: 3}
+      m_Background: {fileID: 2800000, guid: a3d0b7b1de7dcda4ca9ad382e9bb135d, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1131,7 +1131,7 @@ MonoBehaviour:
   pauseBG:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 4830e3e38610f5a4794cc6bf2641a7ff, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1194,11 +1194,11 @@ MonoBehaviour:
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 1
-    m_StretchHeight: 0
+    m_StretchHeight: 1
   pauseButton:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: fca58d2e002024f409da24ced5aea15f, type: 3}
+      m_Background: {fileID: 2800000, guid: 4d2b512548e9f4643ae2926d8795c291, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1265,7 +1265,7 @@ MonoBehaviour:
   leaderboardStyle:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 1ad06cf707b63d84cbf16dae76922b76, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1317,7 +1317,7 @@ MonoBehaviour:
       m_Top: 0
       m_Bottom: 0
     m_Font: {fileID: 0}
-    m_FontSize: 0
+    m_FontSize: 35
     m_FontStyle: 0
     m_Alignment: 0
     m_WordWrap: 0
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   coinGraphic:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 04a2c716af3deef4086598089caba855, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1453,7 +1453,7 @@ MonoBehaviour:
     m_Font: {fileID: 0}
     m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 0
+    m_Alignment: 4
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -1477,13 +1477,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testRun: 0
-  ship: {fileID: 0}
-  moveSpeed: 0
-  maxX: 0
-  spawnY: 0
-  deathY: 0
-  shipToSpawn: {fileID: 0}
-  eventPrefabs: []
+  ship: {fileID: 3518316864240731558, guid: 54b1398a0442b4a2398a0c7a86da0a0c, type: 3}
+  moveSpeed: 0.2
+  maxX: 10
+  spawnY: 20
+  deathY: -5
+  shipToSpawn: {fileID: 3518316864240731558, guid: 54b1398a0442b4a2398a0c7a86da0a0c, type: 3}
+  eventPrefabs:
+  - {fileID: 3169528176950197681, guid: b9ada5374f54e4d6ab8bee94e6e8cf75, type: 3}
+  - {fileID: 4784884907792386902, guid: 50a3aabe48b264120bc8f9d79a4f3023, type: 3}
+  - {fileID: 2766914796174854565, guid: d440d2a6743284d78a61878f7e65bdc8, type: 3}
+  - {fileID: 2766914796174854565, guid: d440d2a6743284d78a61878f7e65bdc8, type: 3}
+  - {fileID: 2766914796174854565, guid: d440d2a6743284d78a61878f7e65bdc8, type: 3}
+  - {fileID: 2766914796174854565, guid: d440d2a6743284d78a61878f7e65bdc8, type: 3}
+  - {fileID: 2766914796174854565, guid: d440d2a6743284d78a61878f7e65bdc8, type: 3}
+  - {fileID: 2766914796174854565, guid: d440d2a6743284d78a61878f7e65bdc8, type: 3}
+  - {fileID: 2766914796174854565, guid: d440d2a6743284d78a61878f7e65bdc8, type: 3}
+  - {fileID: 2766914796174854565, guid: d440d2a6743284d78a61878f7e65bdc8, type: 3}
+  - {fileID: 2766914796174854565, guid: d440d2a6743284d78a61878f7e65bdc8, type: 3}
   moveAngle: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
