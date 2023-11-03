@@ -54,6 +54,8 @@ public class MainMenu : MonoBehaviour
         creditStyle.fontSize = Screen.width / 17;
         coinGraphic.alignment = TextAnchor.MiddleCenter;
         coinGraphic.fontSize = Screen.width / 25;
+        titleLogo.alignment = TextAnchor.MiddleCenter;
+        titleLogo.fontSize = Screen.width / 6;
         settingsButton.alignment = TextAnchor.UpperRight;
     }
 
