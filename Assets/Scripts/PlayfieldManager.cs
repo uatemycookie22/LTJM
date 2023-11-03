@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayfieldManager : MonoBehaviour
 {
-    public bool testRun;
-    public GameObject ship;
     private float gravitySpeed;
     public float moveSpeed;
     public int maxX;
@@ -66,13 +64,6 @@ public class PlayfieldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //for debuging the game without menu activation
-        if (testRun == true)
-        {
-            testRun = false;
-            StartRun();
-        }
-
         //an event can be any object that the user will interact with (asteroids, coins, power-ups)
         obj = GameObject.FindGameObjectsWithTag("Event");
 
