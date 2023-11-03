@@ -52,7 +52,7 @@ public class PlayfieldManager : MonoBehaviour
             Destroy(o);
 
         //handle the score - check for high score
-        CheckHighScore(userShip.GetComponent<ShipManager>().score);
+        // CheckHighScore(userShip.GetComponent<ShipManager>().score);
 
         //destroy the ship
         Destroy(userShip);

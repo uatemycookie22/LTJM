@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4440221, g: 0.49316514, b: 0.5722316, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -279,8 +279,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 11
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -305,7 +305,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 7.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -327,7 +327,7 @@ MonoBehaviour:
   defaultStyle:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: da8227f97472bbb4e81c0ffce13073c2, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -463,7 +463,7 @@ MonoBehaviour:
     m_Normal:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0.8862746, g: 1, b: 1, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -512,10 +512,10 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: 0c3d75cbcbbec014aa27d5d6edd9e8c5, type: 3}
-    m_FontSize: 128
+    m_Font: {fileID: 0}
+    m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 4
+    m_Alignment: 0
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -528,9 +528,9 @@ MonoBehaviour:
   playButton:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 45ce4e6f7ed6997439df3c99af56f9e5, type: 3}
+      m_Background: {fileID: 2800000, guid: feeac2e209fd3b24a8457d0a43b39c68, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0.80392164, g: 0.8941177, b: 0.8980393, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -579,10 +579,10 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: 4476052d4d729eb49a5fa0e8c5daaeee, type: 3}
-    m_FontSize: 50
+    m_Font: {fileID: 0}
+    m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 4
+    m_Alignment: 0
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -863,7 +863,7 @@ MonoBehaviour:
   backButton:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 175e5206ffa17314e832498c8866db5d, type: 3}
+      m_Background: {fileID: 2800000, guid: a3d0b7b1de7dcda4ca9ad382e9bb135d, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1198,7 +1198,74 @@ MonoBehaviour:
   pauseButton:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: fca58d2e002024f409da24ced5aea15f, type: 3}
+      m_Background: {fileID: 2800000, guid: aad146f5d7ae7d6438bff1e38de92072, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  settingsButton:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: c31498aaa090454409e990afa5d84fbb, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1396,6 +1463,73 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  menuBackground:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 4cf6549615537a541bb7e707b01bb532, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
   coinGraphic:
     m_Name: 
     m_Normal:
@@ -1477,13 +1611,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testRun: 0
-  ship: {fileID: 0}
-  moveSpeed: 0
-  maxX: 0
-  spawnY: 0
-  deathY: 0
-  shipToSpawn: {fileID: 0}
-  eventPrefabs: []
+  ship: {fileID: 3518316864240731558, guid: bff421146d691d44799aefa457dfd038, type: 3}
+  moveSpeed: 0.2
+  maxX: 10
+  spawnY: 20
+  deathY: -5
+  shipToSpawn: {fileID: 3518316864240731558, guid: bff421146d691d44799aefa457dfd038, type: 3}
+  eventPrefabs:
+  - {fileID: 3169528176950197681, guid: 71ecb6f431e830a49919365c63883625, type: 3}
+  - {fileID: 4784884907792386902, guid: 7e21a2570c6788049851de0b633df45d, type: 3}
+  - {fileID: 2766914796174854565, guid: 4df22309ffa6b3749a6f29f0c01d726f, type: 3}
+  - {fileID: 2766914796174854565, guid: 4df22309ffa6b3749a6f29f0c01d726f, type: 3}
+  - {fileID: 2766914796174854565, guid: 4df22309ffa6b3749a6f29f0c01d726f, type: 3}
+  - {fileID: 2766914796174854565, guid: 4df22309ffa6b3749a6f29f0c01d726f, type: 3}
+  - {fileID: 2766914796174854565, guid: 4df22309ffa6b3749a6f29f0c01d726f, type: 3}
+  - {fileID: 2766914796174854565, guid: 4df22309ffa6b3749a6f29f0c01d726f, type: 3}
+  - {fileID: 2766914796174854565, guid: 4df22309ffa6b3749a6f29f0c01d726f, type: 3}
   moveAngle: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
