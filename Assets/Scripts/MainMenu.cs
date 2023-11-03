@@ -20,18 +20,13 @@ public class MainMenu : MonoBehaviour
     public GUIStyle languageButton;
     public GUIStyle pauseBG;
     public GUIStyle pauseButton;
-    public GUIStyle settingsButton;
     public GUIStyle leaderboardStyle;
     public GUIStyle creditStyle;
-    public GUIStyle menuBackground;
     public GUIStyle coinGraphic;
-
-    int xPos = 2;
 
     public string currMenu;
     private float volumeSlider = 0.5f;
 
-    private float menuBgAspectRatio = 1.21f;
     //this will be used to add some distance between the edges of the button and the screen
     int buf = Screen.width / 100;
 
@@ -58,26 +53,17 @@ public class MainMenu : MonoBehaviour
         creditStyle.fontSize = Screen.width / 17;
         coinGraphic.alignment = TextAnchor.MiddleCenter;
         coinGraphic.fontSize = Screen.width / 25;
-        titleLogo.alignment = TextAnchor.MiddleCenter;
-        titleLogo.fontSize = Screen.width / 6;
-        settingsButton.alignment = TextAnchor.UpperRight;
     }
 
     // Update is called once per frame
     void Update()
     {
-        xPos = xPos*xPos;
 
-        shopButton = playButton;
-        profileButton = playButton;
-        scoreButton = playButton;
-        instructionsButton = playButton;
     }
 
     private void OnGUI()
     {
-        //For debugging, show the currMenu at the top of the screen. This line is not mobile friendly.
-        
+        //For debugging, show the currMenu at the top of the screen.
         GUI.Label(new Rect(Screen.width / 15, Screen.width / 15, Screen.width, Screen.width / 15), currMenu);
 
         //Change the defaults. This will fix some slider sizing issues.
@@ -85,27 +71,26 @@ public class MainMenu : MonoBehaviour
 
         if (currMenu == "MAIN MENU")
         {
-            GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground);
             GUI.Box(new Rect(Screen.width / 10, Screen.width / 10, Screen.width / 10 * 8, Screen.width / 10 * 8), "ROCKET\nRUN", titleLogo);
-            
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 1), Screen.width / 2, Screen.height / 15), "PLAY", playButton))
+
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 13 * 1), Screen.width / 2, Screen.height / 15), "PLAY", playButton))
             {
                 gameObject.GetComponent<PlayfieldManager>().StartRun();
                 currMenu = "INGAME";
             }
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 2), Screen.width / 2, Screen.height / 15), "SHOP", shopButton))
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 13 * 2), Screen.width / 2, Screen.height / 15), "SHOP", shopButton))
             {
                 currMenu = "SHOP";
             }
-            if (GUI.Button(new Rect(Screen.width - Screen.width / 8 - 10, 10, Screen.width / 8, Screen.width / 8), "", settingsButton))
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 13 * 3), Screen.width / 2, Screen.height / 15), "SETTINGS", profileButton))
             {
                 currMenu = "SETTINGS";
             }
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 3), Screen.width / 2, Screen.height / 15), "INSTRUCTIONS", instructionsButton))
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 13 * 4), Screen.width / 2, Screen.height / 15), "INSTRUCTIONS", instructionsButton))
             {
                 currMenu = "INSTRUCTIONS";
             }
-            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 4), Screen.width / 2, Screen.height / 15), "LEADERBOARD", scoreButton))
+            if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 13 * 5), Screen.width / 2, Screen.height / 15), "LEADERBOARD", scoreButton))
             {
                 currMenu = "LEADERBOARD";
             }
@@ -113,12 +98,12 @@ public class MainMenu : MonoBehaviour
 
         if (currMenu == "PROFILE")
         {
-            GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
                 currMenu = "MAIN MENU";
             }
+
 
         }
 
@@ -144,7 +129,6 @@ public class MainMenu : MonoBehaviour
         //this menu is called from the Playfield Manager
         if(currMenu == "POST GAME")
         {
-            GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //go to the main menu until stuff is added to this screen
             currMenu = "MAIN MENU";
         }
@@ -184,7 +168,6 @@ public class MainMenu : MonoBehaviour
 
         if(currMenu == "SHOP")
         {
-            GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
@@ -218,7 +201,6 @@ public class MainMenu : MonoBehaviour
 
         if(currMenu == "SETTINGS")
         {
-            GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
@@ -259,7 +241,6 @@ public class MainMenu : MonoBehaviour
         GUIStyle tempStyle = new GUIStyle(leaderboardStyle);
         if(currMenu == "LEADERBOARD")
         {
-            GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
@@ -276,8 +257,8 @@ public class MainMenu : MonoBehaviour
             for (int i = 0; i < 10; i++)
             {
                 //get name here and create parallel arrays
-                highScoreList.Add(PlayerPrefs.GetFloat(tempString + (i + 1)));
-                highScoreNameList.Add(PlayerPrefs.GetString(tempString + (i + 1)));
+                highScoreList.Add(PlayerPrefs.GetFloat(tempString + (i + 1).ToString()));
+                highScoreNameList.Add(PlayerPrefs.GetString(tempString + (i + 1).ToString()));
             }
 
             leaderboardStyle.alignment = TextAnchor.MiddleLeft;
@@ -293,12 +274,12 @@ public class MainMenu : MonoBehaviour
 
         if (currMenu == "INSTRUCTIONS")
         {
-            GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
                 currMenu = "MAIN MENU";
             }
+
 
             GUI.Box(new Rect(Screen.width / 10, Screen.height / 15, Screen.width - (Screen.width / 10 * 2), Screen.height / 15), "How-To Title", defaultStyle);
             GUI.Box(new Rect(Screen.width / 10, Screen.height / 15*3, Screen.width - (Screen.width / 10 * 2), Screen.height/15 *11), "How-To text", defaultStyle);
@@ -307,7 +288,6 @@ public class MainMenu : MonoBehaviour
 
         if(currMenu == "CREDITS")
         {
-            GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
