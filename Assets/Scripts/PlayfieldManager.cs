@@ -81,9 +81,13 @@ public class PlayfieldManager : MonoBehaviour
             CreateNewEvent();
         }
 
-        //the positions will change based on the mouse input position
+        Vector3 velocity = userShip.GetComponent<ShipManager>().getVelocity();
+        
+        // Move game objects in the negative direction of the ship 
         foreach (GameObject o in obj)
-            o.transform.position = new Vector3(o.transform.position.x + (moveSpeed * moveAngle), o.transform.position.y, o.transform.position.z);
+        {
+            o.transform.position -= velocity * gravitySpeed;   
+        }
 
         //check to see if an event object has gone out of bounds
         foreach(GameObject o in obj)
@@ -94,14 +98,6 @@ public class PlayfieldManager : MonoBehaviour
             //if the event position is too far to the right, the move it to the left side
             if (o.transform.position.x > 0 + maxX)
                 o.transform.position = new Vector3(o.transform.position.x - (maxX * 2), o.transform.position.y, o.transform.position.z);
-        }
-
-        //Move everything down at the variable rate of GravitySpeed and check to see if it still in vertical bounds
-        foreach (GameObject o in obj)
-        {
-            //move the object once per frame
-            o.transform.position = new Vector3(o.transform.position.x, o.transform.position.y - gravitySpeed, o.transform.position.z);
-
             //if out of bounds, destroy
             if (o.transform.position.y < deathY)
                 Destroy(o);

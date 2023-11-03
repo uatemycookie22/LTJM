@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class ShipManager : MonoBehaviour
 
     public int coinMultiplier = 1;
     public int multFramesRemaining = 0;
+    private readonly Vector3 initVelocity = new Vector3(0, 1, 0);
+    private Vector3 shipVelocity;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,7 @@ public class ShipManager : MonoBehaviour
         fuelRemaining = PlayerPrefs.GetFloat("Max Fuel");
         score = 0;
         multFramesRemaining = 0;
+        shipVelocity = initVelocity;
 
         //if its the first time playing, then the fuel will be 0 to start
         //change the default memory amount of 0 fuel to starting amount
@@ -66,10 +70,13 @@ public class ShipManager : MonoBehaviour
         direction = (1 - (touchPosition / screenCenter)) * -1;
 
         //rotate the ship based on the maximum (45 degree) angle that the user can travel at
-        transform.eulerAngles = new Vector3(0, 0, direction * maxTurnAngle * -1);
+        float shipAngle = Math.Clamp(direction * maxTurnAngle * -1, -maxTurnAngle, maxTurnAngle);
+        transform.eulerAngles = new Vector3(0, 0, shipAngle);
 
         //update the playfield manager with the new direction of the ship
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().moveAngle = direction * -1;
+
+        shipVelocity = Quaternion.AngleAxis(shipAngle, transform.forward) * initVelocity;
     }
 
     //do a fuel slider
@@ -84,5 +91,10 @@ public class ShipManager : MonoBehaviour
         //write to memory that a coin has been added to the pot
         //multiply coinAmount by coin multiplier
         PlayerPrefs.SetInt("Total Coins", PlayerPrefs.GetInt("Total Coins") + (coinAmount * coinMultiplier));
+    }
+
+    public Vector3 getVelocity()
+    {
+        return shipVelocity;
     }
 }
