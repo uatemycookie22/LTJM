@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
     public GUIStyle creditStyle;
     public GUIStyle menuBackground;
     public GUIStyle coinGraphic;
+    public GUIStyle altitudeLabel;
 
     int xPos = 2;
 
@@ -61,6 +62,8 @@ public class MainMenu : MonoBehaviour
         titleLogo.alignment = TextAnchor.MiddleCenter;
         titleLogo.fontSize = Screen.width / 6;
         settingsButton.alignment = TextAnchor.UpperRight;
+        altitudeLabel.fontSize = Screen.width / 14;
+        altitudeLabel.alignment = TextAnchor.MiddleCenter;
     }
 
     // Update is called once per frame
@@ -136,6 +139,11 @@ public class MainMenu : MonoBehaviour
             //show fuel level
 
             //show elevation
+            int altitude = (int)GameObject.FindGameObjectWithTag("MainCamera")
+                .GetComponent<PlayfieldManager>().getAltitude();
+            altitude /= 10;
+            
+            GUI.Box(new Rect(Screen.width / 10, Screen.height / 120, Screen.width / 10 * 8 , Screen.width / 8), "Altitude: " + altitude, altitudeLabel);
 
             //show pause button
 

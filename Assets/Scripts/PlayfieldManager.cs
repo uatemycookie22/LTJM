@@ -176,4 +176,10 @@ public class PlayfieldManager : MonoBehaviour
             }
         }
     }
+
+    public float getAltitude()
+    {
+        return userShip.GetComponent<ShipManager>()
+            .getAltitude();
+    }
 }

@@ -23,6 +23,7 @@ public class ShipManager : MonoBehaviour
     public int multFramesRemaining = 0;
     private readonly Vector3 initVelocity = new Vector3(0, 1, 0);
     private Vector3 shipVelocity;
+    private float shipAltitude = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +78,7 @@ public class ShipManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().moveAngle = direction * -1;
 
         shipVelocity = Quaternion.AngleAxis(shipAngle, transform.forward) * initVelocity;
+        shipAltitude += shipVelocity.y;
     }
 
     //do a fuel slider
@@ -96,5 +98,10 @@ public class ShipManager : MonoBehaviour
     public Vector3 getVelocity()
     {
         return shipVelocity;
+    }
+    
+    public float getAltitude()
+    {
+        return shipAltitude;
     }
 }
