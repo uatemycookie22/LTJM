@@ -284,8 +284,8 @@ public class MainMenu : MonoBehaviour
             for (int i = 0; i < 10; i++)
             {
                 //get name here and create parallel arrays
-                highScoreList.Add(PlayerPrefs.GetFloat(tempString + (i + 1)));
-                highScoreNameList.Add(PlayerPrefs.GetString(tempString + (i + 1)));
+                highScoreList.Add(PlayerPrefs.GetFloat(tempString + (i + 1).ToString()));
+                highScoreNameList.Add(PlayerPrefs.GetString(tempString + (i + 1).ToString()));
             }
 
             leaderboardStyle.alignment = TextAnchor.MiddleLeft;

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayfieldManager : MonoBehaviour
 {
-    public bool testRun;
-    public GameObject ship;
     private float gravitySpeed;
     public float moveSpeed;
     public int maxX;
@@ -32,14 +30,14 @@ public class PlayfieldManager : MonoBehaviour
 
     public void StartRun()
     {
+        //spawn the ship
+        userShip = Instantiate(shipToSpawn);
+
         //randomly spawn all the events in a field above the screen.
         for(int i = 0; i < maxEvents; i++)
         {
             CreateNewEvent();
         }
-
-        //spawn the ship
-        userShip = Instantiate(shipToSpawn);
 
         inGame = true;
     }
@@ -66,13 +64,6 @@ public class PlayfieldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //for debuging the game without menu activation
-        if (testRun == true)
-        {
-            testRun = false;
-            StartRun();
-        }
-
         //an event can be any object that the user will interact with (asteroids, coins, power-ups)
         obj = GameObject.FindGameObjectsWithTag("Event");
 
@@ -137,9 +128,14 @@ public class PlayfieldManager : MonoBehaviour
     {
         //how close is too close? in units
         int tooClose = 2;
-        foreach (GameObject o in obj)
+        foreach (GameObject o in obj) {
             if (Vector3.Distance(o.transform.position, newEvent.transform.position) < tooClose)
                 return false;
+            if (newEvent.transform.position.x < maxX*-1 + (tooClose/2))
+                return false;
+            if (newEvent.transform.position.x > maxX - (tooClose/2))
+                return false;
+        }
         return true;
     }
 

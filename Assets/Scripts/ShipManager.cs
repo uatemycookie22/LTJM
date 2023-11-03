@@ -67,17 +67,20 @@ public class ShipManager : MonoBehaviour
         //~~~SHIP CONTROLS~~~
         //update the direction variable based on the mouse position. 
         //direction is based on the mouse position, left or right of the screen center (range -1 to 1)
-        touchPosition = Input.mousePosition.x;
-        direction = (1 - (touchPosition / screenCenter)) * -1;
+        if (Input.mousePosition.y < Screen.height / 2)  //if the touch is on the bottom half of the screen - fix for when the player hits the pause button but still steers
+        {
+            touchPosition = Input.mousePosition.x;
+            direction = (1 - (touchPosition / screenCenter)) * -1;
+            
+            //rotate the ship based on the maximum (45 degree) angle that the user can travel at
+            float shipAngle = Math.Clamp(direction * maxTurnAngle * -1, -maxTurnAngle, maxTurnAngle);
+            transform.eulerAngles = new Vector3(0, 0, shipAngle);
 
-        //rotate the ship based on the maximum (45 degree) angle that the user can travel at
-        float shipAngle = Math.Clamp(direction * maxTurnAngle * -1, -maxTurnAngle, maxTurnAngle);
-        transform.eulerAngles = new Vector3(0, 0, shipAngle);
-
-        //update the playfield manager with the new direction of the ship
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().moveAngle = direction * -1;
-
-        shipVelocity = Quaternion.AngleAxis(shipAngle, transform.forward) * initVelocity;
+            //update the playfield manager with the new direction of the ship
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().moveAngle = direction * -1;
+        }
+        
+        shipVelocity = Quaternion.AngleAxis(transform.eulerAngles.z, transform.forward) * initVelocity;
         shipAltitude += shipVelocity.y;
     }
 
