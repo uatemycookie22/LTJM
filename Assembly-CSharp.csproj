@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\CoinEvent.cs" />
     <Compile Include="Assets\Scripts\PlayfieldManager.cs" />
     <Compile Include="Assets\Scripts\CoinMuliplierEvent.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\AsteroidEvent.cs" />
   </ItemGroup>
   <ItemGroup>
