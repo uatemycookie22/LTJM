@@ -72,7 +72,9 @@ public class PlayfieldManager : MonoBehaviour
             CreateNewEvent();
         }
 
-        Vector3 velocity = userShip.GetComponent<ShipManager>().getVelocity();
+        Vector3 velocity = new Vector3(0, 0, 0);
+        if(userShip != null)            //make sure the ship exists first
+            velocity = userShip.GetComponent<ShipManager>().getVelocity();
         
         // Move game objects in the negative direction of the ship 
         foreach (GameObject o in obj)
@@ -89,17 +91,17 @@ public class PlayfieldManager : MonoBehaviour
             //if the event position is too far to the right, the move it to the left side
             if (o.transform.position.x > 0 + maxX)
                 o.transform.position = new Vector3(o.transform.position.x - (maxX * 2), o.transform.position.y, o.transform.position.z);
-            //if out of bounds, destroy
+            //if out of lower bounds (off screen), destroy
             if (o.transform.position.y < deathY)
                 Destroy(o);
         }
 
-        //draw a box around the area of randomised spawning (above playable area)
+        //draw a debug box around the area of randomised spawning (above playable area)
         Debug.DrawLine(new Vector3(maxX * -1, spawnY, 0), new Vector3(maxX * -1, spawnY + (spawnY - deathY), 0));
         Debug.DrawLine(new Vector3(maxX, spawnY, 0), new Vector3(maxX, spawnY + (spawnY - deathY), 0));
         Debug.DrawLine(new Vector3(maxX, spawnY + (spawnY - deathY), 0), new Vector3(maxX * -1, spawnY + (spawnY - deathY), 0));
 
-        //draw a box around the playable space (below the area of randomised spawning)
+        //draw a debug box around the playable space (below the area of randomised spawning)
         Debug.DrawLine(new Vector3(maxX*-1, spawnY, 0), new Vector3(maxX*-1, deathY, 0));
         Debug.DrawLine(new Vector3(maxX, spawnY, 0), new Vector3(maxX, deathY, 0));
         Debug.DrawLine(new Vector3(maxX, spawnY, 0), new Vector3(maxX*-1, spawnY, 0));
