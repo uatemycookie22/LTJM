@@ -22,6 +22,14 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
+        //if the volume has never been set before, then set it to 1 in playerPrefs
+        if (PlayerPrefs.HasKey("Volume") == false)
+            PlayerPrefs.SetFloat("Volume", 1);
+
+        //set the volume to whatever is stored in PlayerPrefs
+        changeVolume(PlayerPrefs.GetFloat("Volume"));
+
+        //start playing some background audio and make sure the backgrounds are set to loop
         mainMenuBG.Play();
         mainMenuBG.loop = true;
         inGameBG.loop = true;
@@ -31,5 +39,23 @@ public class AudioManager : MonoBehaviour
     {
         if (!audible.isPlaying)
             audible.Play();
+    }
+
+    public void changeVolume(float newVolume)
+    {
+        mainMenuBG.volume = newVolume;
+        inGameBG.volume = newVolume;
+
+        genericClick.volume = newVolume;
+        purchasedItem.volume = newVolume;
+        insufiscentFunds.volume = newVolume;
+        pause.volume = newVolume;
+        resume.volume = newVolume;
+
+        hitAsteroid.volume = newVolume;
+        hitCoin.volume = newVolume;
+        hitMultiplier.volume = newVolume;
+        hitFuel.volume = newVolume;
+        gameOver.volume = newVolume;
     }
 }
