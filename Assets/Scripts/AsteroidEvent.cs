@@ -20,7 +20,7 @@ public class AsteroidEvent : MonoBehaviour
         {
             //When the event hits the player: do something
             //decrement from fuel based on damageAmount
-            GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().fuelRemaining -= damageAmount; //handle a shield?
+            GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().addFuel(-damageAmount); //handle a shield?
             Destroy(gameObject);
         }
     }

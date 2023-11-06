@@ -19,7 +19,7 @@ public class FuelEvent : MonoBehaviour
         if (col.tag == "Player")
         {
             //When the event hits the player: do something
-            GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().fuelRemaining += volume;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().addFuel(volume);
             Destroy(gameObject);
         }
     }
