@@ -6,11 +6,13 @@ public class FuelEvent : MonoBehaviour
 {
 
     public float volume = 50;
+    private AudioManager audio;
 
     // Start is called before the first frame update
     void Start()
     {
         gameObject.name = "Fuel";
+        audio = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioManager>();
     }
 
 
@@ -18,6 +20,8 @@ public class FuelEvent : MonoBehaviour
     {
         if (col.tag == "Player")
         {
+            audio.hitFuel.Stop();
+            audio.playAudioOnce(audio.hitFuel);
             //When the event hits the player: do something
             GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().fuelRemaining += volume;
             Destroy(gameObject);

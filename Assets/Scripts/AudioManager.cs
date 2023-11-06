@@ -43,8 +43,8 @@ public class AudioManager : MonoBehaviour
 
     public void changeVolume(float newVolume)
     {
-        mainMenuBG.volume = newVolume;
-        inGameBG.volume = newVolume;
+        mainMenuBG.volume = newVolume/2;
+        inGameBG.volume = newVolume/2;
 
         genericClick.volume = newVolume;
         purchasedItem.volume = newVolume;

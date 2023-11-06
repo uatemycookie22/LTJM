@@ -36,6 +36,8 @@ public class MainMenu : MonoBehaviour
     //this will be used to add some distance between the edges of the button and the screen
     int buf = Screen.width / 100;
 
+    private AudioManager audio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +66,9 @@ public class MainMenu : MonoBehaviour
         settingsButton.alignment = TextAnchor.UpperRight;
         altitudeLabel.fontSize = Screen.width / 14;
         altitudeLabel.alignment = TextAnchor.MiddleCenter;
+
+        audio = gameObject.GetComponent<AudioManager>();
+        audio.playAudioOnce(audio.mainMenuBG);
     }
 
     // Update is called once per frame
@@ -94,22 +99,27 @@ public class MainMenu : MonoBehaviour
             if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 1), Screen.width / 2, Screen.height / 15), "PLAY", playButton))
             {
                 gameObject.GetComponent<PlayfieldManager>().StartRun();
+                audio.playAudioOnce(audio.genericClick);
                 currMenu = "INGAME";
             }
             if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 2), Screen.width / 2, Screen.height / 15), "SHOP", shopButton))
             {
+                audio.playAudioOnce(audio.genericClick);
                 currMenu = "SHOP";
             }
             if (GUI.Button(new Rect(Screen.width - Screen.width / 8 - 10, 10, Screen.width / 8, Screen.width / 8), "", settingsButton))
             {
+                audio.playAudioOnce(audio.genericClick);
                 currMenu = "SETTINGS";
             }
             if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 3), Screen.width / 2, Screen.height / 15), "INSTRUCTIONS", instructionsButton))
             {
+                audio.playAudioOnce(audio.genericClick);
                 currMenu = "INSTRUCTIONS";
             }
             if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 4), Screen.width / 2, Screen.height / 15), "LEADERBOARD", scoreButton))
             {
+                audio.playAudioOnce(audio.genericClick);
                 currMenu = "LEADERBOARD";
             }
         }
@@ -120,6 +130,7 @@ public class MainMenu : MonoBehaviour
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
+                audio.playAudioOnce(audio.genericClick);
                 currMenu = "MAIN MENU";
             }
 
@@ -127,9 +138,13 @@ public class MainMenu : MonoBehaviour
 
         if (currMenu == "INGAME")
         {
+            audio.mainMenuBG.Stop();
+            audio.playAudioOnce(audio.inGameBG);
+
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", pauseButton))
             {
+                audio.playAudioOnce(audio.pause);
                 currMenu = "PAUSE";
             }
             
@@ -152,6 +167,9 @@ public class MainMenu : MonoBehaviour
         //this menu is called from the Playfield Manager
         if(currMenu == "POST GAME")
         {
+            audio.inGameBG.Stop();
+            audio.playAudioOnce(audio.gameOver);
+            audio.playAudioOnce(audio.mainMenuBG);
             GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //go to the main menu until stuff is added to this screen
             currMenu = "MAIN MENU";
@@ -166,6 +184,7 @@ public class MainMenu : MonoBehaviour
             GetComponent<PlayfieldManager>().enabled = false;
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", unPauseButton))
             {
+                audio.playAudioOnce(audio.resume);
                 currMenu = "INGAME";
                 GetComponent<PlayfieldManager>().enabled = true;
             }
@@ -175,6 +194,7 @@ public class MainMenu : MonoBehaviour
                 //tell the playfield manager to clear all objects
                 GetComponent<PlayfieldManager>().enabled = true;
                 gameObject.GetComponent<PlayfieldManager>().EndRun();
+                audio.playAudioOnce(audio.genericClick);
 
                 currMenu = "MAIN MENU";
             }
@@ -186,6 +206,7 @@ public class MainMenu : MonoBehaviour
                 GetComponent<PlayfieldManager>().enabled = true;
                 gameObject.GetComponent<PlayfieldManager>().EndRun();
                 gameObject.GetComponent<PlayfieldManager>().StartRun();
+                audio.playAudioOnce(audio.genericClick);
                 currMenu = "INGAME";
             }
         }
@@ -196,6 +217,7 @@ public class MainMenu : MonoBehaviour
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
+                audio.playAudioOnce(audio.genericClick);
                 currMenu = "MAIN MENU";
             }
 
@@ -230,6 +252,7 @@ public class MainMenu : MonoBehaviour
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
+                audio.playAudioOnce(audio.genericClick);
                 currMenu = "MAIN MENU";
             }
 
@@ -271,6 +294,7 @@ public class MainMenu : MonoBehaviour
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
+                audio.playAudioOnce(audio.genericClick);
                 currMenu = "MAIN MENU";
             }
 
@@ -305,6 +329,7 @@ public class MainMenu : MonoBehaviour
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
+                audio.playAudioOnce(audio.genericClick);
                 currMenu = "MAIN MENU";
             }
 
@@ -319,6 +344,7 @@ public class MainMenu : MonoBehaviour
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
+                audio.playAudioOnce(audio.genericClick);
                 currMenu = "MAIN MENU";
             }
 
