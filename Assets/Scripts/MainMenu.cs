@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,7 @@ public class MainMenu : MonoBehaviour
     public GUIStyle menuBackground;
     public GUIStyle coinGraphic;
     public GUIStyle altitudeLabel;
+    public GUIStyle plusButton;
 
     int xPos = 2;
 
@@ -137,6 +139,12 @@ public class MainMenu : MonoBehaviour
             GUI.Box(new Rect(Screen.width / 100, Screen.height / 120, Screen.width / 8, Screen.width / 8), PlayerPrefs.GetInt("Total Coins") + "\nCoins", coinGraphic);
 
             //show fuel level
+            float fuel = GameObject.FindGameObjectWithTag("MainCamera")
+                .GetComponent<PlayfieldManager>().getFuel();
+
+            fuel = 1 - (fuel / PlayerPrefs.GetFloat("Max Fuel"));
+   
+            float fuelSlider = GUI.HorizontalSlider(new Rect((Screen.width / 10) * 6, (Screen.height / 10) * 9, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), fuel, 0.0f, 1.0f);
 
             //show elevation
             int altitude = (int)GameObject.FindGameObjectWithTag("MainCamera")
@@ -193,6 +201,10 @@ public class MainMenu : MonoBehaviour
         if(currMenu == "SHOP")
         {
             GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
+            //show coin count
+            GUI.Box(new Rect(Screen.width / 100, Screen.height / 120, Screen.width / 8, Screen.width / 8), PlayerPrefs.GetInt("Total Coins") + "\nCoins", coinGraphic);
+
+            
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
             {
@@ -212,16 +224,37 @@ public class MainMenu : MonoBehaviour
             //Shields slider
             float shieldsSlider = GUI.HorizontalSlider(new Rect(Screen.width / 5, (Screen.height / (shopItemsCount * 2 + 1)) * 3, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), PlayerPrefs.GetInt("Shield Level"), 0.0f, 10.0f);
             GUI.Label(new Rect(Screen.width / 5, (Screen.height / (shopItemsCount * 2 + 1)) * 3 - sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), "Slider Value: " + shieldsSlider.ToString("F0"), defaultStyle);
-
-            PlayerPrefs.SetInt("Max Fuel", 5);
+            //Upgrade shield button
+            if (GUI.Button(new Rect(Screen.width / 8, (Screen.height / (shopItemsCount * 2 + 1)) * 3, sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedHeight), "", plusButton))
+            {
+                int cost = levelToCost(PlayerPrefs.GetInt("Shield Level"));
+                PlayerPrefs.SetInt("Shield Level", PlayerPrefs.GetInt("Shield Level") + 1);
+                PlayerPrefs.SetInt("Total Coins", PlayerPrefs.GetInt("Total Coins") - cost);
+            }
+            
+            PlayerPrefs.SetFloat("Max Fuel", 800);
             //Fuel Tank Slider
-            float fuelSlider = GUI.HorizontalSlider(new Rect(Screen.width / 5, (Screen.height / (shopItemsCount * 2 + 1)) * 5, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), PlayerPrefs.GetInt("Max Fuel"), 0.0f, 10.0f);
+            float fuelSlider = GUI.HorizontalSlider(new Rect(Screen.width / 5, (Screen.height / (shopItemsCount * 2 + 1)) * 5, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), PlayerPrefs.GetFloat("Max Fuel"), 0.0f, 10.0f);
             GUI.Label(new Rect(Screen.width / 5, (Screen.height / (shopItemsCount * 2 + 1)) * 5 - sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), "Slider Value: " + fuelSlider.ToString("F0"), defaultStyle);
-
+            //Upgrade fuel button
+            if (GUI.Button(new Rect(Screen.width / 8, (Screen.height / (shopItemsCount * 2 + 1)) * 5, sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedHeight), "", plusButton))
+            {
+                int cost = levelToCost(PlayerPrefs.GetFloat("Max Fuel"));
+                PlayerPrefs.SetFloat("Max Fuel", PlayerPrefs.GetFloat("Max Fuel") + 1);
+                PlayerPrefs.SetInt("Total Coins", PlayerPrefs.GetInt("Total Coins") - cost);
+            }
+            
             //Coin Magnet Slider
-            PlayerPrefs.SetInt("Coin Magnet Chance", 5);
+            PlayerPrefs.SetInt("Magnet Level", 5);
             float magnetSlider = GUI.HorizontalSlider(new Rect(Screen.width / 5, (Screen.height / (shopItemsCount * 2 + 1)) * 7, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), PlayerPrefs.GetInt("Magnet Level"), 0.0f, 10.0f);
             GUI.Label(new Rect(Screen.width / 5, (Screen.height / (shopItemsCount * 2 + 1)) * 7 - sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), "Slider Value: " + magnetSlider.ToString("F0"), defaultStyle);
+            //Upgrade magnet button
+            if (GUI.Button(new Rect(Screen.width / 8, (Screen.height / (shopItemsCount * 2 + 1)) * 7, sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedHeight), "", plusButton))
+            {
+                int cost = levelToCost(PlayerPrefs.GetInt("Magnet Level"));
+                PlayerPrefs.SetInt("Magnet Level", PlayerPrefs.GetInt("Magnet Level") + 1);
+                PlayerPrefs.SetInt("Total Coins", PlayerPrefs.GetInt("Total Coins") - cost);
+            }
         }
 
         if(currMenu == "SETTINGS")
@@ -325,5 +358,10 @@ public class MainMenu : MonoBehaviour
             //Show Creater info
             GUI.Box(new Rect(Screen.width / 5, Screen.height / 9, Screen.width / 5 * 3, Screen.height / 9 * 7), "Credit Text HERE", creditStyle);
         }
+    }
+
+    private int levelToCost(float level)
+    {
+        return (int)Math.Pow(PlayerPrefs.GetInt("Shield Level"), 2);
     }
 }
