@@ -107,4 +107,14 @@ public class ShipManager : MonoBehaviour
     {
         return shipAltitude;
     }
+    
+    public float getFuel()
+    {
+        return fuelRemaining;
+    }
+
+    public void addFuel(float fuelAmount)
+    {
+        fuelRemaining = Math.Clamp(fuelRemaining + fuelAmount, 0, PlayerPrefs.GetFloat("Max Fuel")) ;
+    }
 }

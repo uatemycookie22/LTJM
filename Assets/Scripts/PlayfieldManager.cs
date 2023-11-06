@@ -180,4 +180,10 @@ public class PlayfieldManager : MonoBehaviour
         return userShip.GetComponent<ShipManager>()
             .getAltitude();
     }
+    
+    public float getFuel()
+    {
+        return userShip.GetComponent<ShipManager>()
+            .getFuel();
+    }
 }
