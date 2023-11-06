@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayfieldManager : MonoBehaviour
 {
@@ -79,7 +81,8 @@ public class PlayfieldManager : MonoBehaviour
         // Move game objects in the negative direction of the ship 
         foreach (GameObject o in obj)
         {
-            o.transform.position -= velocity * gravitySpeed;   
+            float difficulty = (float) Math.Log10(getAltitude()) / 3.0f;
+            o.transform.position -= velocity * gravitySpeed * difficulty;   
         }
 
         //check to see if an event object has gone out of bounds
@@ -177,12 +180,15 @@ public class PlayfieldManager : MonoBehaviour
 
     public float getAltitude()
     {
-        return userShip.GetComponent<ShipManager>()
+        if (userShip == null) return 1.0f;
+        float altitude = userShip.GetComponent<ShipManager>()
             .getAltitude();
+        return altitude > 1 ? altitude : 1;
     }
     
     public float getFuel()
     {
+        if (userShip == null) return 0;
         return userShip.GetComponent<ShipManager>()
             .getFuel();
     }
