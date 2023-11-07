@@ -30,6 +30,8 @@ public class PlayfieldManager : MonoBehaviour
 
     public void StartRun()
     {
+        gravitySpeed = moveSpeed;
+
         //spawn the ship
         userShip = Instantiate(shipToSpawn);
 
@@ -64,6 +66,8 @@ public class PlayfieldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gravitySpeed += 0.001f;
+
         //an event can be any object that the user will interact with (asteroids, coins, power-ups)
         obj = GameObject.FindGameObjectsWithTag("Event");
 
@@ -130,7 +134,7 @@ public class PlayfieldManager : MonoBehaviour
     bool ProximityCheck(GameObject newEvent)
     {
         //how close is too close? in units
-        int tooClose = 2;
+        float tooClose = 2.0f;
         foreach (GameObject o in obj) {
             if (Vector3.Distance(o.transform.position, newEvent.transform.position) < tooClose)
                 return false;
