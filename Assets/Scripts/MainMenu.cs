@@ -43,7 +43,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 50;
+        Application.targetFrameRate = 30;
         currMenu = "MAIN MENU";
 
         //set all the font sizes based on screen size
@@ -337,13 +337,33 @@ public class MainMenu : MonoBehaviour
             //get the leader names and score from the playerprefs memory
             List<float> highScoreList = new List<float>();
             List<string> highScoreNameList = new List<string>();
-            string tempString = "High";
-            for (int i = 0; i < 10; i++)
-            {
-                //get name here and create parallel arrays
-                highScoreList.Add(PlayerPrefs.GetFloat(tempString + (i + 1).ToString()));
-                highScoreNameList.Add(PlayerPrefs.GetString(tempString + (i + 1).ToString()));
-            }
+            //string tempString = "High";
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    //get name here and create parallel arrays
+            //    highScoreList.Add(PlayerPrefs.GetFloat(tempString + (i + 1).ToString()));
+            //    highScoreNameList.Add(PlayerPrefs.GetString("Name" + tempString + (i + 1).ToString()));
+            //}
+            highScoreList.Add(PlayerPrefs.GetFloat("High1"));
+            highScoreList.Add(PlayerPrefs.GetFloat("High2"));
+            highScoreList.Add(PlayerPrefs.GetFloat("High3"));
+            highScoreList.Add(PlayerPrefs.GetFloat("High4"));
+            highScoreList.Add(PlayerPrefs.GetFloat("High5"));
+            highScoreList.Add(PlayerPrefs.GetFloat("High6"));
+            highScoreList.Add(PlayerPrefs.GetFloat("High7"));
+            highScoreList.Add(PlayerPrefs.GetFloat("High8"));
+            highScoreList.Add(PlayerPrefs.GetFloat("High9"));
+            highScoreList.Add(PlayerPrefs.GetFloat("High10"));
+            highScoreNameList.Add(PlayerPrefs.GetString("Name" + "High1"));
+            highScoreNameList.Add(PlayerPrefs.GetString("Name" + "High2"));
+            highScoreNameList.Add(PlayerPrefs.GetString("Name" + "High3"));
+            highScoreNameList.Add(PlayerPrefs.GetString("Name" + "High4"));
+            highScoreNameList.Add(PlayerPrefs.GetString("Name" + "High5"));
+            highScoreNameList.Add(PlayerPrefs.GetString("Name" + "High6"));
+            highScoreNameList.Add(PlayerPrefs.GetString("Name" + "High7"));
+            highScoreNameList.Add(PlayerPrefs.GetString("Name" + "High8"));
+            highScoreNameList.Add(PlayerPrefs.GetString("Name" + "High9"));
+            highScoreNameList.Add(PlayerPrefs.GetString("Name" + "High10"));
 
             leaderboardStyle.alignment = TextAnchor.MiddleLeft;
             for (int i = 0; i < 10; i++)

@@ -1746,6 +1746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327e8539526d2774e911a2be3d1e4cad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frameSkippingRate: 0
   moveSpeed: 0.2
   maxX: 10
   spawnY: 20

@@ -50,7 +50,7 @@ public class PlayfieldManager : MonoBehaviour
             Destroy(o);
 
         //handle the score - check for high score
-        // CheckHighScore(userShip.GetComponent<ShipManager>().score);
+        CheckHighScore(userShip.GetComponent<ShipManager>().score);
 
         //destroy the ship
         Destroy(userShip);
@@ -60,30 +60,31 @@ public class PlayfieldManager : MonoBehaviour
 
         inGame = false;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
         //an event can be any object that the user will interact with (asteroids, coins, power-ups)
         obj = GameObject.FindGameObjectsWithTag("Event");
 
-        //if there are less than 15 events, then instantiate new events
-        if (obj.Length < maxEvents && inGame){
+        //if there are less than maxEvents, then instantiate new events
+        if (obj.Length < maxEvents && inGame)
+        {
             CreateNewEvent();
         }
 
         Vector3 velocity = new Vector3(0, 0, 0);
-        if(userShip != null)            //make sure the ship exists first
+        if (userShip != null)            //make sure the ship exists first
             velocity = userShip.GetComponent<ShipManager>().getVelocity();
-        
+
         // Move game objects in the negative direction of the ship 
         foreach (GameObject o in obj)
         {
-            o.transform.position -= velocity * gravitySpeed;   
+            o.transform.position -= velocity * gravitySpeed;
         }
 
         //check to see if an event object has gone out of bounds
-        foreach(GameObject o in obj)
+        foreach (GameObject o in obj)
         {
             //if the event position is too far to the left, the move it to the right side
             if (o.transform.position.x < 0 - maxX)
@@ -144,38 +145,122 @@ public class PlayfieldManager : MonoBehaviour
     //update the high score the hard way
     private void CheckHighScore(float score)
     {
+        Debug.Log("Checking against score " + score);
         //if the score is able to make the top 10...
-        if(PlayerPrefs.GetFloat("High10") < score)
+        if (PlayerPrefs.GetFloat("High10") < score)
         {
-            List<float> highScoreList = new List<float>();
-            List<string> highScoreNameList = new List<string>();
-            string tempString = "High";
-            for(int i = 0; i < 10; i++)
-            {
-                //get name here and create parallel arrays
-                float iScore = PlayerPrefs.GetFloat(tempString + (i+1));
-                string iScoreName = PlayerPrefs.GetString(tempString + (i+1));
-                if (iScore < score)
-                {
-                    highScoreList.Add(score);
-                    highScoreNameList.Add(PlayerPrefs.GetString("User Name"));
-                    score = 0;
-                }
-                highScoreList.Add(iScore);
-                highScoreNameList.Add(iScoreName);
-            }
-            for(int i = 0; i < 10; i++)
-            {
-                PlayerPrefs.SetFloat(tempString + (i + 1), highScoreList[i]);
-                PlayerPrefs.SetString(tempString + (i + 1), highScoreNameList[i]);
-                Debug.Log(tempString + (i + 1) + "  " + highScoreList[i]);
-                Debug.Log(PlayerPrefs.GetFloat(tempString + (i + 1)));
-                //update name order here
-            }
+            PlayerPrefs.SetFloat("High10", score);
+            PlayerPrefs.SetString("Name" + "High10", PlayerPrefs.GetString("User Name"));
+            //List<float> highScoreList = new List<float>();
+            //List<string> highScoreNameList = new List<string>();
+            //string tempString = "High";
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    //get name here and create parallel arrays
+            //    float iScore = PlayerPrefs.GetFloat(tempString + (i + 1));
+            //    string iScoreName = PlayerPrefs.GetString("Name" + tempString + (i + 1));
+            //    if (iScore < score)
+            //    {
+            //        highScoreList.Add(score);
+            //        highScoreNameList.Add(PlayerPrefs.GetString("User Name"));
+            //        score = 0;
+            //    }
+            //    highScoreList.Add(iScore);
+            //    highScoreNameList.Add(iScoreName);
+            //}
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    PlayerPrefs.SetFloat(tempString + (i + 1), highScoreList[i]);
+            //    PlayerPrefs.SetString("Name" + tempString + (i + 1), highScoreNameList[i]);
+            //    Debug.Log(tempString + (i + 1) + "  " + highScoreList[i]);
+            //    Debug.Log(PlayerPrefs.GetFloat(tempString + (i + 1)));
+            //    //update name order here
+            //}
+        }
+        if (PlayerPrefs.GetFloat("High9") < score)
+        {
+            //move this player back a spot to insert the new score
+            PlayerPrefs.SetFloat("High10", PlayerPrefs.GetFloat("High9"));
+            PlayerPrefs.SetString("Name" + "High10", PlayerPrefs.GetString("High9"));
+            //insert player at current high score spot
+            PlayerPrefs.SetFloat("High9", score);
+            PlayerPrefs.SetString("Name" + "High9", PlayerPrefs.GetString("User Name"));
+        }
+        if (PlayerPrefs.GetFloat("High8") < score)
+        {
+            //move this player back a spot to insert the new score
+            PlayerPrefs.SetFloat("High9", PlayerPrefs.GetFloat("High8"));
+            PlayerPrefs.SetString("Name" + "High9", PlayerPrefs.GetString("High8"));
+            //insert player at current high score spot
+            PlayerPrefs.SetFloat("High8", score);
+            PlayerPrefs.SetString("Name" + "High8", PlayerPrefs.GetString("User Name"));
+        }
+        if (PlayerPrefs.GetFloat("High7") < score)
+        {
+            //move this player back a spot to insert the new score
+            PlayerPrefs.SetFloat("High8", PlayerPrefs.GetFloat("High7"));
+            PlayerPrefs.SetString("Name" + "High8", PlayerPrefs.GetString("High7"));
+            //insert player at current high score spot
+            PlayerPrefs.SetFloat("High7", score);
+            PlayerPrefs.SetString("Name" + "High7", PlayerPrefs.GetString("User Name"));
+        }
+        if (PlayerPrefs.GetFloat("High6") < score)
+        {
+            //move this player back a spot to insert the new score
+            PlayerPrefs.SetFloat("High7", PlayerPrefs.GetFloat("High6"));
+            PlayerPrefs.SetString("Name" + "High7", PlayerPrefs.GetString("High6"));
+            //insert player at current high score spot
+            PlayerPrefs.SetFloat("High6", score);
+            PlayerPrefs.SetString("Name" + "High6", PlayerPrefs.GetString("User Name"));
+        }
+        if (PlayerPrefs.GetFloat("High5") < score)
+        {
+            //move this player back a spot to insert the new score
+            PlayerPrefs.SetFloat("High6", PlayerPrefs.GetFloat("High5"));
+            PlayerPrefs.SetString("Name" + "High6", PlayerPrefs.GetString("High5"));
+            //insert player at current high score spot
+            PlayerPrefs.SetFloat("High5", score);
+            PlayerPrefs.SetString("Name" + "High5", PlayerPrefs.GetString("User Name"));
+        }
+        if (PlayerPrefs.GetFloat("High4") < score)
+        {
+            //move this player back a spot to insert the new score
+            PlayerPrefs.SetFloat("High5", PlayerPrefs.GetFloat("High4"));
+            PlayerPrefs.SetString("Name" + "High5", PlayerPrefs.GetString("High4"));
+            //insert player at current high score spot
+            PlayerPrefs.SetFloat("High4", score);
+            PlayerPrefs.SetString("Name" + "High4", PlayerPrefs.GetString("User Name"));
+        }
+        if (PlayerPrefs.GetFloat("High3") < score)
+        {
+            //move this player back a spot to insert the new score
+            PlayerPrefs.SetFloat("High4", PlayerPrefs.GetFloat("High3"));
+            PlayerPrefs.SetString("Name" + "High4", PlayerPrefs.GetString("High3"));
+            //insert player at current high score spot
+            PlayerPrefs.SetFloat("High3", score);
+            PlayerPrefs.SetString("Name" + "High3", PlayerPrefs.GetString("User Name"));
+        }
+        if (PlayerPrefs.GetFloat("High2") < score)
+        {
+            //move this player back a spot to insert the new score
+            PlayerPrefs.SetFloat("High3", PlayerPrefs.GetFloat("High2"));
+            PlayerPrefs.SetString("Name" + "High3", PlayerPrefs.GetString("High2"));
+            //insert player at current high score spot
+            PlayerPrefs.SetFloat("High2", score);
+            PlayerPrefs.SetString("Name" + "High2", PlayerPrefs.GetString("User Name"));
+        }
+        if (PlayerPrefs.GetFloat("High1") < score)
+        {
+            //move this player back a spot to insert the new score
+            PlayerPrefs.SetFloat("High2", PlayerPrefs.GetFloat("High1"));
+            PlayerPrefs.SetString("Name" + "High2", PlayerPrefs.GetString("High1"));
+            //insert player at current high score spot
+            PlayerPrefs.SetFloat("High1", score);
+            PlayerPrefs.SetString("Name" + "High1", PlayerPrefs.GetString("User Name"));
         }
     }
 
-    public float getAltitude()
+        public float getAltitude()
     {
         return userShip.GetComponent<ShipManager>()
             .getAltitude();
