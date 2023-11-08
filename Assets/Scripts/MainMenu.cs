@@ -70,7 +70,6 @@ public class MainMenu : MonoBehaviour
         altitudeLabel.alignment = TextAnchor.MiddleCenter;
 
         audio = gameObject.GetComponent<AudioManager>();
-        audio.playAudioOnce(audio.mainMenuBG);
     }
 
     // Update is called once per frame
@@ -88,7 +87,8 @@ public class MainMenu : MonoBehaviour
     {
         //For debugging, show the currMenu at the top of the screen. This line is not mobile friendly.
         
-        GUI.Label(new Rect(Screen.width / 15, Screen.width / 15, Screen.width, Screen.width / 15), currMenu);
+        //currMenu displayed on the screen for debugging purposes. Do not let this get built to an apk or aab.
+        //GUI.Label(new Rect(Screen.width / 15, Screen.width / 15, Screen.width, Screen.width / 15), currMenu);
 
         //Change the defaults. This will fix some slider sizing issues.
         GUI.skin = sliderStyle;
@@ -140,8 +140,8 @@ public class MainMenu : MonoBehaviour
 
         if (currMenu == "INGAME")
         {
-            audio.mainMenuBG.Stop();
-            audio.playAudioOnce(audio.inGameBG);
+            audio.Stop(audio.inGameBG);
+            audio.PlayLoop(audio.inGameBG);
 
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", pauseButton))
@@ -175,9 +175,9 @@ public class MainMenu : MonoBehaviour
         //this menu is called from the Playfield Manager
         if(currMenu == "POST GAME")
         {
-            audio.inGameBG.Stop();
+            audio.Stop(audio.inGameBG);
             audio.playAudioOnce(audio.gameOver);
-            audio.playAudioOnce(audio.mainMenuBG);
+            audio.PlayLoop(audio.mainMenuBG);
             GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //go to the main menu until stuff is added to this screen
             currMenu = "MAIN MENU";

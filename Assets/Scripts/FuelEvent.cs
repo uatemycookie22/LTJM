@@ -20,7 +20,7 @@ public class FuelEvent : MonoBehaviour
     {
         if (col.tag == "Player")
         {
-            audio.hitFuel.Stop();
+            audio.Stop(audio.hitFuel);
             audio.playAudioOnce(audio.hitFuel);
             //When the event hits the player: do something
             GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().fuelRemaining += volume;

@@ -26,19 +26,46 @@ public class AudioManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Volume") == false)
             PlayerPrefs.SetFloat("Volume", 1);
 
-        //set the volume to whatever is stored in PlayerPrefs
-        changeVolume(PlayerPrefs.GetFloat("Volume"));
 
         //start playing some background audio and make sure the backgrounds are set to loop
-        mainMenuBG.Play();
-        mainMenuBG.loop = true;
-        inGameBG.loop = true;
+        if (mainMenuBG != null)
+        {
+            //set the volume to whatever is stored in PlayerPrefs
+            changeVolume(PlayerPrefs.GetFloat("Volume"));
+
+            PlayLoop(mainMenuBG);
+        }
+    }
+
+    public void Stop(AudioSource audible)
+    {
+        if (audible != null)
+        {
+            audible.Stop();
+        }
+        else
+            Debug.LogWarning("Be sure to set all audio sources. Some are still null.");
+    }
+
+    public void PlayLoop(AudioSource audible)
+    {
+        if (audible != null)
+        {
+            audible.loop = true;
+            audible.Play();                
+        }
+        else
+            Debug.LogWarning("Be sure to set all audio sources. Some are still null.");
     }
 
     public void playAudioOnce(AudioSource audible)
     {
-        if (!audible.isPlaying)
-            audible.Play();
+        if (audible != null)
+        {
+            if (!audible.isPlaying)
+                audible.Play();
+        } else
+            Debug.LogWarning("Be sure to set all audio sources. Some are still null.");
     }
 
     public void changeVolume(float newVolume)

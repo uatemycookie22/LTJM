@@ -21,7 +21,7 @@ public class CoinEvent : MonoBehaviour
         if (col.tag == "Player")
         {
             //When the event hits the player: do something
-            audio.hitCoin.Stop();
+            audio.Stop(audio.hitCoin);
             audio.playAudioOnce(audio.hitCoin);
             GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().addCoin(coinAmount);
             Destroy(gameObject);

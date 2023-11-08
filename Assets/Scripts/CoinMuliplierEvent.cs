@@ -19,7 +19,7 @@ public class CoinMuliplierEvent : MonoBehaviour
     {
         if (col.tag == "Player")
         {
-            audio.hitMultiplier.Stop();
+            audio.Stop(audio.hitMultiplier);
             audio.playAudioOnce(audio.hitMultiplier);
             //When the event hits the player: do something
             GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().coinMultiplier = coinMultiplierValue;
