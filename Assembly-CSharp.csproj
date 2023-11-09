@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\CoinMuliplierEvent.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\AsteroidEvent.cs" />
+    <Compile Include="Assets\Scripts\ParallaxBackground.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Varela_Round\OFL.txt" />

@@ -66,6 +66,7 @@ public class PlayfieldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //increase difficulty - at a constant rate?
         gravitySpeed += 0.001f;
 
         //an event can be any object that the user will interact with (asteroids, coins, power-ups)
