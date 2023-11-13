@@ -30,7 +30,7 @@ public class ShipManager : MonoBehaviour
     {
         screenCenter = Screen.width / 2;
         //Go to the PlayerPrefs and get the max fuel amount
-        fuelRemaining = PlayerPrefs.GetFloat("Max Fuel");
+        fuelRemaining = defaultFuelAmount + (float)Math.Pow(PlayerPrefs.GetInt("Fuel Level"), 2) * 60;
         score = 0;
         multFramesRemaining = 0;
         shipVelocity = initVelocity;
@@ -41,6 +41,8 @@ public class ShipManager : MonoBehaviour
             fuelRemaining = defaultFuelAmount;
             PlayerPrefs.GetFloat("Max Fuel", defaultFuelAmount);
         }
+        
+        PlayerPrefs.SetFloat("Max Fuel", fuelRemaining);
     }
 
     // Update is called once per frame
