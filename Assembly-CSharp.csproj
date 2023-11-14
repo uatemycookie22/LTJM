@@ -1,20 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
-    <_TargetFrameworkDirectories>non_empty_path_generated_by_unity.rider.package</_TargetFrameworkDirectories>
-    <_FullFrameworkReferenceAssemblyPaths>non_empty_path_generated_by_unity.rider.package</_FullFrameworkReferenceAssemblyPaths>
-    <DisableHandlePackageFileConflicts>true</DisableHandlePackageFileConflicts>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{2C2DB22E-8979-1A40-6289-9C277B67AC77}</ProjectGuid>
-    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -26,13 +22,21 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Temp\Bin\Debug\Assembly-CSharp\</OutputPath>
+    <OutputPath>Temp\Bin\Debug\</OutputPath>
     <DefineConstants>UNITY_2022_3_10;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_RUNTIME_PERMISSIONS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_ANDROID;TEXTCORE_1_0_OR_NEWER;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;UNITY_CAN_SHOW_SPLASH_SCREEN;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO;ENABLE_SPATIALTRACKING;ENABLE_ETC_COMPRESSION;PLATFORM_EXTENDS_VULKAN_DEVICE;PLATFORM_HAS_MULTIPLE_SWAPCHAINS;UNITY_ANDROID_SUPPORTS_SHADOWFILES;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <NoWarn>0169,0649</NoWarn>
+    <NoWarn>0169</NoWarn>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
-    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -41,10 +45,14 @@
     <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
-  <ItemGroup>
-    <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
-    <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
-  </ItemGroup>
+  <PropertyGroup>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UnityProjectGenerator>Package</UnityProjectGenerator>
+    <UnityProjectGeneratorVersion>2.0.21</UnityProjectGeneratorVersion>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>Android:13</UnityBuildTarget>
+    <UnityVersion>2022.3.10f1</UnityVersion>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ShipManager.cs" />
     <Compile Include="Assets\Scripts\FuelEvent.cs" />
@@ -55,15 +63,18 @@
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\AsteroidEvent.cs" />
     <Compile Include="Assets\Scripts\ParallaxBackground.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Assets\Varela_Round\OFL.txt" />
     <None Include="Assets\Roboto_Slab\README.txt" />
     <None Include="Assets\Sofia_Sans_Condensed\OFL.txt" />
-    <None Include="Assets\6000FlatButtonIcon\readme.txt" />
     <None Include="Assets\Gabarito\README.txt" />
     <None Include="Assets\Roboto_Slab\LICENSE.txt" />
     <None Include="Assets\Gabarito\OFL.txt" />
     <None Include="Assets\Sofia_Sans_Condensed\README.txt" />
     <None Include="Assets\Roboto_Condensed\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -305,7 +316,7 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Android.Types">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
@@ -683,157 +694,76 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Updater">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>C:\Users\lee\unity\LTJM\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\6000FlatButtonIcon 1\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_circle\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_corner_rectangle1\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_corner_rectangle2\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_corner_rectangle3\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_corner_rectangle4\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_corner_rectangle5\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_corner_square1\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_corner_square2\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_corner_square3\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_corner_square4\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_corner_square5\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_oval\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_rectangle\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button\button_square\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_circle_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_corner_rectangle1_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_corner_rectangle2_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_corner_rectangle3_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_corner_rectangle4_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_corner_rectangle5_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_corner_square1_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_corner_square2_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_corner_square3_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_corner_square4_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_corner_square5_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_oval_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_rectangle_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\button_line\button_square_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_01\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_02\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_03\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_04\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_05\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_06\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_07\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_08\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_09\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_10\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_11\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_12\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_13\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_14\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_15\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_16\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_17\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_18\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_19\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_20\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_21\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_22\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_23\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_24\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_25\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_26\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_27\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_28\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_29\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_30\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_31\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_32\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_33\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_34\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_35\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_36\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_37\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_38\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_39\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_40\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_41\" />
-    <Folder Include="Assets\6000FlatButtonIcon\png\icon\icon_42\" />
-    <Folder Include="Assets\6000FlatButtonIcon\psd\button\" />
-    <Folder Include="Assets\6000FlatButtonIcon\psd\button_line\" />
-    <Folder Include="Assets\6000FlatButtonIcon\psd\icon\" />
-    <Folder Include="Assets\6000FlatButtonIcon\unity_demo\" />
-    <Folder Include="Assets\Gabarito\static\" />
-    <Folder Include="Assets\Graphics\" />
-    <Folder Include="Assets\Music Tracks\" />
-    <Folder Include="Assets\Prefabs\" />
-    <Folder Include="Assets\Roboto_Slab\static\" />
-    <Folder Include="Assets\Scenes\" />
-    <Folder Include="Assets\Sofia_Sans_Condensed\static\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

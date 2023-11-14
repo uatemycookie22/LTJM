@@ -80,6 +80,7 @@ public class ShipManager : MonoBehaviour
 
             //update the playfield manager with the new direction of the ship
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().moveAngle = direction * -1;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ParallaxBackground>().HorizontalSpeedAndDirection = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ParallaxBackground>().VerticalSpeedAndDirection * direction;
         }
         
         shipVelocity = Quaternion.AngleAxis(transform.eulerAngles.z, transform.forward) * initVelocity;
