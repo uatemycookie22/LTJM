@@ -8,7 +8,6 @@ public class MainMenu : MonoBehaviour
     public GUISkin sliderStyle;
     public GUIStyle defaultStyle;
 
-    public GUIStyle unPauseButton;
     public GUIStyle titleLogo;
     public GUIStyle playButton;
     public GUIStyle shopButton;
@@ -21,6 +20,7 @@ public class MainMenu : MonoBehaviour
     public GUIStyle languageButton;
     public GUIStyle pauseBG;
     public GUIStyle pauseButton;
+    public GUIStyle unPauseButton;
     public GUIStyle settingsButton;
     public GUIStyle leaderboardStyle;
     public GUIStyle creditStyle;
@@ -76,6 +76,7 @@ public class MainMenu : MonoBehaviour
         settingsButton.alignment = TextAnchor.UpperRight;
         altitudeLabel.fontSize = Screen.width / 14;
         altitudeLabel.alignment = TextAnchor.MiddleCenter;
+        leaderboardStyle.fontSize = Screen.width / 17;
 
         audio = gameObject.GetComponent<AudioManager>();
     }
