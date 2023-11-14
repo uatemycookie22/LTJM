@@ -55,12 +55,6 @@ public class ShipManager : MonoBehaviour
         else
             coinMultiplier = 1;
 
-        //~~~FUEL USAGE~~~
-        //if we run out of fuel, then end the game
-        fuelRemaining -= fuelUsageRate;
-        if(fuelRemaining <= 0)
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().EndRun();
-
         //~~~SCORE HANDLER~~~
         //score is incremented once per frame
         //high score handling is not done by the ship. It is done by the playfield manager at the end of the game.
@@ -82,6 +76,12 @@ public class ShipManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().moveAngle = direction * -1;
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ParallaxBackground>().HorizontalSpeedAndDirection = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ParallaxBackground>().VerticalSpeedAndDirection * direction;
         }
+
+        //~~~FUEL USAGE~~~
+        //if we run out of fuel, then end the game
+        fuelRemaining -= fuelUsageRate;
+        if(fuelRemaining <= 0)
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().EndRun();
         
         shipVelocity = Quaternion.AngleAxis(transform.eulerAngles.z, transform.forward) * initVelocity;
         shipAltitude += shipVelocity.y;

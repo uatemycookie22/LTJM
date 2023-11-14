@@ -57,11 +57,12 @@ public class PlayfieldManager : MonoBehaviour
         //destroy the ship
         Destroy(userShip);
 
+        //set the paralax background horizontal speed to 0
+        GetComponent<ParallaxBackground>().HorizontalSpeedAndDirection = 0;
+
         //change the screen to post game
         GetComponent<MainMenu>().currMenu = "POST GAME";
 
-        //set the paralax background horizontal speed to 0
-        GetComponent<ParallaxBackground>().HorizontalSpeedAndDirection = 0;
 
         inGame = false;
     }

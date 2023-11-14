@@ -21,10 +21,10 @@ public class ParallaxBackground : MonoBehaviour
         //Set the y position of the layers
         for (int i = 0; i < layers.Length/4; i++)
         {
-            layers[0 + (i * 4)].transform.localPosition = new Vector3(offScreenResetPoints / 2.0f, offScreenResetPoints / 2.0f, 10 + (1 * Mathf.Floor((i + 4) / 4)));
-            layers[1 + (i * 4)].transform.localPosition = new Vector3(offScreenResetPoints / 2.0f, offScreenResetPoints / 2.0f * -1, 10 + (1 * Mathf.Floor((i + 4) / 4)));
-            layers[2 + (i * 4)].transform.localPosition = new Vector3(offScreenResetPoints / 2.0f * -1, offScreenResetPoints / 2.0f, 10 + (1 * Mathf.Floor((i + 4) / 4)));
-            layers[3 + (i * 4)].transform.localPosition = new Vector3(offScreenResetPoints / 2.0f * -1, offScreenResetPoints / 2.0f * -1, 10 + (1 * Mathf.Floor((i + 4) / 4)));
+            layers[0 + (i * 4)].transform.localPosition = new Vector3(offScreenResetPoints / 2.0f, offScreenResetPoints / 2.0f, 10 + i);
+            layers[1 + (i * 4)].transform.localPosition = new Vector3(offScreenResetPoints / 2.0f, offScreenResetPoints / 2.0f * -1, 10 + i);
+            layers[2 + (i * 4)].transform.localPosition = new Vector3(offScreenResetPoints / 2.0f * -1, offScreenResetPoints / 2.0f, 10 + i);
+            layers[3 + (i * 4)].transform.localPosition = new Vector3(offScreenResetPoints / 2.0f * -1, offScreenResetPoints / 2.0f * -1, 10 + i);
         }
 
         //scale
@@ -38,7 +38,7 @@ public class ParallaxBackground : MonoBehaviour
         for(int i = 0; i < layers.Length; i++)
         {
             //update the x and y position based on its movement speed
-            Vector3 newPos = new Vector3(layers[i].transform.localPosition.x - HorizontalSpeedAndDirection, layers[i].transform.localPosition.y - VerticalSpeedAndDirection, layers[i].transform.localPosition.z);
+            Vector3 newPos = new Vector3(layers[i].transform.localPosition.x - (HorizontalSpeedAndDirection/((i/4)+1)), layers[i].transform.localPosition.y - (VerticalSpeedAndDirection/((i/4)+1)), layers[i].transform.localPosition.z);
             
             //check bounds of the y position
             if (layers[i].transform.localPosition.y < offScreenResetPoints*-1)
