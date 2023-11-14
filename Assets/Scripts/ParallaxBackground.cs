@@ -16,9 +16,9 @@ public class ParallaxBackground : MonoBehaviour
         offScreenResetPoints = gameObject.GetComponent<Camera>().orthographicSize*2;
         for (int i = 0; i < layers.Length; i++)
             if (i % 2 != 0)
-                layers[i].transform.localPosition = new Vector3(0, offScreenResetPoints/2.0f, 0);
+                layers[i].transform.localPosition = new Vector3(0, offScreenResetPoints/2.0f, 10 + (1 * Mathf.Floor((i + 2) / 2)));
             else
-                layers[i].transform.localPosition = new Vector3(0, offScreenResetPoints/2.0f * -1, 0);
+                layers[i].transform.localPosition = new Vector3(0, offScreenResetPoints/2.0f * -1, 10 + (1 * Mathf.Floor((i + 2) / 2)));
     }
 
     // Update is called once per frame
@@ -26,12 +26,12 @@ public class ParallaxBackground : MonoBehaviour
     {
         for(int i = 0; i < layers.Length; i++)
         {
-            Vector3 newPos = new Vector3(0, layers[i].transform.localPosition.y - (speedAndDirection*Mathf.Floor((i+2)/2)), 0);
+            Vector3 newPos = new Vector3(0, layers[i].transform.localPosition.y - (speedAndDirection*Mathf.Floor((i+2)/2)), 10 + (1 * Mathf.Floor((i + 2) / 2)));
 
             if (layers[i].transform.localPosition.y < offScreenResetPoints*-1)
-                newPos = new Vector3(0, offScreenResetPoints, 0);
+                newPos = new Vector3(0, offScreenResetPoints, 10 + (1 * Mathf.Floor((i + 2) / 2)));
             if (layers[i].transform.localPosition.y > offScreenResetPoints)
-                newPos = new Vector3(0, offScreenResetPoints * -1, 0);
+                newPos = new Vector3(0, offScreenResetPoints * -1, 10 + (1 * Mathf.Floor((i + 2) / 2)));
 
             layers[i].transform.localPosition = newPos;
         }
