@@ -38,6 +38,7 @@ public class PlayfieldManager : MonoBehaviour
         //randomly spawn all the events in a field above the screen.
         for(int i = 0; i < maxEvents; i++)
         {
+            obj = GameObject.FindGameObjectsWithTag("Event");
             CreateNewEvent();
         }
 
@@ -57,8 +58,9 @@ public class PlayfieldManager : MonoBehaviour
         //destroy the ship
         Destroy(userShip);
 
-        //set the paralax background horizontal speed to 0
-        GetComponent<ParallaxBackground>().HorizontalSpeedAndDirection = 0;
+        //reset the paralax background speed
+        GetComponent<ParallaxBackground>().ResetBackground();
+
 
         //change the screen to post game
         GetComponent<MainMenu>().currMenu = "POST GAME";
@@ -70,40 +72,46 @@ public class PlayfieldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //increase difficulty - at a constant rate?
-        gravitySpeed += 0.001f;
-
-        //an event can be any object that the user will interact with (asteroids, coins, power-ups)
-        obj = GameObject.FindGameObjectsWithTag("Event");
-
-        //if there are less than maxEvents, then instantiate new events
-        if (obj.Length < maxEvents && inGame)
+        //this block of code should only run during game play (refactoring)
+        if (inGame)
         {
-            CreateNewEvent();
-        }
+            //increase difficulty - at a constant rate?
+            gravitySpeed += 0.001f;
+            //also increase the speed for the parallax background
+            GetComponent<ParallaxBackground>().VerticalSpeedAndDirection += 0.0004f;
 
-        Vector3 velocity = new Vector3(0, 0, 0);
-        if (userShip != null)            //make sure the ship exists first
-            velocity = userShip.GetComponent<ShipManager>().getVelocity();
+            //an event can be any object that the user will interact with (asteroids, coins, power-ups)
+            obj = GameObject.FindGameObjectsWithTag("Event");
 
-        // Move game objects in the negative direction of the ship 
-        foreach (GameObject o in obj)
-        {
-            o.transform.position -= velocity * gravitySpeed;
-        }
+            //if there are less than maxEvents, then instantiate new events
+            if (obj.Length < maxEvents && inGame)
+            {
+                CreateNewEvent();
+            }
 
-        //check to see if an event object has gone out of bounds
-        foreach (GameObject o in obj)
-        {
-            //if the event position is too far to the left, the move it to the right side
-            if (o.transform.position.x < 0 - maxX)
-                o.transform.position = new Vector3(o.transform.position.x + (maxX * 2), o.transform.position.y, o.transform.position.z);
-            //if the event position is too far to the right, the move it to the left side
-            if (o.transform.position.x > 0 + maxX)
-                o.transform.position = new Vector3(o.transform.position.x - (maxX * 2), o.transform.position.y, o.transform.position.z);
-            //if out of lower bounds (off screen), destroy
-            if (o.transform.position.y < deathY)
-                Destroy(o);
+            Vector3 velocity = new Vector3(0, 0, 0);
+            if (userShip != null)            //make sure the ship exists first
+                velocity = userShip.GetComponent<ShipManager>().getVelocity();
+
+            // Move game objects in the negative direction of the ship 
+            foreach (GameObject o in obj)
+            {
+                o.transform.position -= velocity * gravitySpeed;
+            }
+
+            //check to see if an event object has gone out of bounds
+            foreach (GameObject o in obj)
+            {
+                //if the event position is too far to the left, the move it to the right side
+                if (o.transform.position.x < 0 - maxX)
+                    o.transform.position = new Vector3(o.transform.position.x + (maxX * 2), o.transform.position.y, o.transform.position.z);
+                //if the event position is too far to the right, the move it to the left side
+                if (o.transform.position.x > 0 + maxX)
+                    o.transform.position = new Vector3(o.transform.position.x - (maxX * 2), o.transform.position.y, o.transform.position.z);
+                //if out of lower bounds (off screen), destroy
+                if (o.transform.position.y < deathY)
+                    Destroy(o);
+            }
         }
 
         //draw a debug box around the area of randomised spawning (above playable area)

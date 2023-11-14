@@ -12,9 +12,16 @@ public class ParallaxBackground : MonoBehaviour
     public GameObject[] layers;
 
     public float offScreenResetPoints;
+    private float startSpeed;
 
     public void Start()
     {
+        //the bg speed should a specific rate slower than the normal game speed
+        VerticalSpeedAndDirection = GetComponent<PlayfieldManager>().moveSpeed / 5;
+
+        //record the starting speed for when the game ends and resets
+        startSpeed = VerticalSpeedAndDirection;
+
         //get the X and Y limits from the viewing size of the camera
         offScreenResetPoints = gameObject.GetComponent<Camera>().orthographicSize*2;
 
@@ -54,5 +61,11 @@ public class ParallaxBackground : MonoBehaviour
 
             layers[i].transform.localPosition = newPos;
         }
+    }
+
+    public void ResetBackground()
+    {
+        VerticalSpeedAndDirection = startSpeed;
+        HorizontalSpeedAndDirection = 0;
     }
 }
