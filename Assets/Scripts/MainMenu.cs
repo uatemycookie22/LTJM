@@ -6,6 +6,7 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
     public GUISkin sliderStyle;
+    public GUISkin FuelSliderStyle;
     public GUIStyle defaultStyle;
 
     public GUIStyle titleLogo;
@@ -73,6 +74,10 @@ public class MainMenu : MonoBehaviour
         coinGraphic.fontSize = Screen.width / 25;
         titleLogo.alignment = TextAnchor.MiddleCenter;
         titleLogo.fontSize = Screen.width / 6;
+        titleLogo.border.left = Screen.width / 20;
+        titleLogo.border.right = Screen.width / 20;
+        titleLogo.border.top = Screen.width / 20;
+        titleLogo.border.bottom = Screen.width / 20;
         settingsButton.alignment = TextAnchor.UpperRight;
         altitudeLabel.fontSize = Screen.width / 14;
         altitudeLabel.alignment = TextAnchor.MiddleCenter;
@@ -100,7 +105,6 @@ public class MainMenu : MonoBehaviour
         //GUI.Label(new Rect(Screen.width / 15, Screen.width / 15, Screen.width, Screen.width / 15), currMenu);
 
         //Change the defaults. This will fix some slider sizing issues.
-        GUI.skin = sliderStyle;
 
         if (currMenu == "MAIN MENU")
         {
@@ -118,11 +122,11 @@ public class MainMenu : MonoBehaviour
                 audio.playAudioOnce(audio.genericClick);
                 currMenu = "SHOP";
             }
-            if (GUI.Button(new Rect(Screen.width - Screen.width / 8 - 10, 10, Screen.width / 8, Screen.width / 8), "", settingsButton))
-            {
-                audio.playAudioOnce(audio.genericClick);
-                currMenu = "SETTINGS";
-            }
+            //if (GUI.Button(new Rect(Screen.width - Screen.width / 8 - 10, 10, Screen.width / 8, Screen.width / 8), "", settingsButton))
+            //{
+            //    audio.playAudioOnce(audio.genericClick);
+            //    currMenu = "SETTINGS";
+            //}
             if (GUI.Button(new Rect(Screen.width / 4, Screen.height / 2 + (Screen.height / 12 * 3), Screen.width / 2, Screen.height / 15), "INSTRUCTIONS", instructionsButton))
             {
                 audio.playAudioOnce(audio.genericClick);
@@ -149,6 +153,8 @@ public class MainMenu : MonoBehaviour
 
         if (currMenu == "INGAME")
         {
+            GUI.skin = FuelSliderStyle;
+
             audio.Stop(audio.inGameBG);
             audio.PlayLoop(audio.inGameBG);
 
@@ -167,8 +173,9 @@ public class MainMenu : MonoBehaviour
                 .GetComponent<PlayfieldManager>().getFuel();
 
             fuel = 1 - (fuel / PlayerPrefs.GetFloat("Max Fuel"));
-   
-            float fuelSlider = GUI.HorizontalSlider(new Rect((Screen.width / 10) * 6, (Screen.height / 10) * 9, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), fuel, 0.0f, 1.0f);
+
+            FuelSliderStyle.horizontalSliderThumb.fixedWidth = Screen.width / 16;
+            float fuelSlider = GUI.HorizontalSlider(new Rect(0, Screen.height-(Screen.height / 25), Screen.width, Screen.height/25), fuel, 0.0f, 1.0f);
 
             //show elevation
             int altitude = (int)GameObject.FindGameObjectWithTag("MainCamera")
@@ -230,6 +237,8 @@ public class MainMenu : MonoBehaviour
 
         if(currMenu == "SHOP")
         {
+            GUI.skin = sliderStyle;
+
             GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //show coin count
             GUI.Box(new Rect(Screen.width / 100, Screen.height / 120, Screen.width / 8, Screen.width / 8), PlayerPrefs.GetInt("Total Coins") + "\nCoins", coinGraphic);
@@ -242,7 +251,7 @@ public class MainMenu : MonoBehaviour
                 currMenu = "MAIN MENU";
             }
 
-            GUI.Box(new Rect(Screen.width / 10, Screen.height / 15, Screen.width - (Screen.width / 10 * 2), Screen.height / 15), "Shop Title", shopButton);
+            GUI.Box(new Rect(Screen.width / 4, Screen.height / 15, Screen.width / 2, Screen.height / 15), "SHOP", shopButton);
 
             //sliders are not user controlled. They will use the +- buttons and the slider will move when they buy something
             int shopItemsCount = 5;
@@ -349,13 +358,6 @@ public class MainMenu : MonoBehaviour
             //get the leader names and score from the playerprefs memory
             List<float> highScoreList = new List<float>();
             List<string> highScoreNameList = new List<string>();
-            //string tempString = "High";
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    //get name here and create parallel arrays
-            //    highScoreList.Add(PlayerPrefs.GetFloat(tempString + (i + 1).ToString()));
-            //    highScoreNameList.Add(PlayerPrefs.GetString("Name" + tempString + (i + 1).ToString()));
-            //}
             highScoreList.Add(PlayerPrefs.GetFloat("High1"));
             highScoreList.Add(PlayerPrefs.GetFloat("High2"));
             highScoreList.Add(PlayerPrefs.GetFloat("High3"));

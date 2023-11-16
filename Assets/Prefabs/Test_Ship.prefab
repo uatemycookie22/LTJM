@@ -208,7 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   maxTurnAngle: 45
-  fuelUsageRate: 0
+  fuelUsageRate: 1
   fuelRemaining: 0
   score: 0
   coinMultiplier: 1

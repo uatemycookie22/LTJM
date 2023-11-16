@@ -76,7 +76,7 @@ public class PlayfieldManager : MonoBehaviour
         if (inGame)
         {
             //increase difficulty - at a constant rate?
-            gravitySpeed += 0.001f;
+            gravitySpeed += 0.0005f;
             //also increase the speed for the parallax background
             GetComponent<ParallaxBackground>().VerticalSpeedAndDirection += 0.0004f;
 
@@ -168,31 +168,6 @@ public class PlayfieldManager : MonoBehaviour
         {
             PlayerPrefs.SetFloat("High10", score);
             PlayerPrefs.SetString("Name" + "High10", PlayerPrefs.GetString("User Name"));
-            //List<float> highScoreList = new List<float>();
-            //List<string> highScoreNameList = new List<string>();
-            //string tempString = "High";
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    //get name here and create parallel arrays
-            //    float iScore = PlayerPrefs.GetFloat(tempString + (i + 1));
-            //    string iScoreName = PlayerPrefs.GetString("Name" + tempString + (i + 1));
-            //    if (iScore < score)
-            //    {
-            //        highScoreList.Add(score);
-            //        highScoreNameList.Add(PlayerPrefs.GetString("User Name"));
-            //        score = 0;
-            //    }
-            //    highScoreList.Add(iScore);
-            //    highScoreNameList.Add(iScoreName);
-            //}
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    PlayerPrefs.SetFloat(tempString + (i + 1), highScoreList[i]);
-            //    PlayerPrefs.SetString("Name" + tempString + (i + 1), highScoreNameList[i]);
-            //    Debug.Log(tempString + (i + 1) + "  " + highScoreList[i]);
-            //    Debug.Log(PlayerPrefs.GetFloat(tempString + (i + 1)));
-            //    //update name order here
-            //}
         }
         if (PlayerPrefs.GetFloat("High9") < score)
         {

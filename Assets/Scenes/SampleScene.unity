@@ -444,7 +444,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -752,7 +752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc7eb5ed135608143ad095c2f08a3165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderStyle: {fileID: 11400000, guid: 9d54a6956f61810428138b54dd0a58b8, type: 2}
+  sliderStyle: {fileID: 11400000, guid: 40f7db8d53cddeb42a7cabe102ac4494, type: 2}
+  FuelSliderStyle: {fileID: 11400000, guid: 9d54a6956f61810428138b54dd0a58b8, type: 2}
   defaultStyle:
     m_Name: 
     m_Normal:
@@ -823,9 +824,9 @@ MonoBehaviour:
   titleLogo:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 1d4d866f2efba7648957060b33b3ad12, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0.8862746, g: 1, b: 1, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -890,7 +891,7 @@ MonoBehaviour:
   playButton:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 45ce4e6f7ed6997439df3c99af56f9e5, type: 3}
+      m_Background: {fileID: 2800000, guid: 664b1f74b2b47394ea7d3040da582e22, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0.80392164, g: 0.8941177, b: 0.8980393, a: 1}
     m_Hover:
@@ -1225,7 +1226,7 @@ MonoBehaviour:
   backButton:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 175e5206ffa17314e832498c8866db5d, type: 3}
+      m_Background: {fileID: 2800000, guid: a3d0b7b1de7dcda4ca9ad382e9bb135d, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1560,7 +1561,7 @@ MonoBehaviour:
   pauseButton:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: fca58d2e002024f409da24ced5aea15f, type: 3}
+      m_Background: {fileID: 2800000, guid: aad146f5d7ae7d6438bff1e38de92072, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1627,7 +1628,7 @@ MonoBehaviour:
   unPauseButton:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: e6a06c3ec96fd5b4c995e150eead056a, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1761,9 +1762,9 @@ MonoBehaviour:
   leaderboardStyle:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 2021c0938028e1542be14011dc722bf9, type: 3}
       m_ScaledBackgrounds: []
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
@@ -1895,7 +1896,7 @@ MonoBehaviour:
   menuBackground:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 4cf6549615537a541bb7e707b01bb532, type: 3}
+      m_Background: {fileID: 0}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -1962,7 +1963,7 @@ MonoBehaviour:
   coinGraphic:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 234e5040e1bab9b4fb83c4b6755b316c, type: 3}
+      m_Background: {fileID: 2800000, guid: 04a2c716af3deef4086598089caba855, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
