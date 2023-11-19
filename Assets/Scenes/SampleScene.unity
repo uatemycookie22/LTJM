@@ -2097,7 +2097,7 @@ MonoBehaviour:
   plusButton:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: b27f193be501be34a96f40373596617c, type: 3}
+      m_Background: {fileID: 2800000, guid: 0de7cb5270a60e946b8460fc2fe815f1, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -2164,7 +2164,7 @@ MonoBehaviour:
   shieldIcon:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: ea1ff169388e3ef4d8a7676f16f3ee09, type: 3}
+      m_Background: {fileID: 2800000, guid: 602817c1a85633347b9232505056e809, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -2231,7 +2231,7 @@ MonoBehaviour:
   fuelIcon:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 13f9cd89616e3ce44b5bc586b17c7c24, type: 3}
+      m_Background: {fileID: 2800000, guid: 75e2e38d28aac2147b3807841927c5d2, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
@@ -2298,7 +2298,7 @@ MonoBehaviour:
   magnetIcon:
     m_Name: 
     m_Normal:
-      m_Background: {fileID: 2800000, guid: e7a421ab9c2c0504e8aed7fbcfe5e5a3, type: 3}
+      m_Background: {fileID: 2800000, guid: 73f4b8427b9d32a418180a4d1db7b96d, type: 3}
       m_ScaledBackgrounds: []
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:

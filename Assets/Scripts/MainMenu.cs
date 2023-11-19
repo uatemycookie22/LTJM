@@ -50,7 +50,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("Shield Level", 1);
         PlayerPrefs.SetInt("Fuel Level", 1);
         PlayerPrefs.SetInt("Magnet Level", 1);
-        PlayerPrefs.SetInt("Total Coins", 1000);
+        //PlayerPrefs.SetInt("Total Coins", 1000);
         
         Application.targetFrameRate = 30;
         currMenu = "MAIN MENU";
