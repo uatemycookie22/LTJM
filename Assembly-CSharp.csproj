@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ShipManager.cs" />
     <Compile Include="Assets\Scripts\FuelEvent.cs" />
+    <Compile Include="Assets\Asteroids Pack\Assets\Scripts\RandomRotator.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\CoinEvent.cs" />
     <Compile Include="Assets\Scripts\PlayfieldManager.cs" />

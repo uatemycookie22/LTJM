@@ -26,15 +26,11 @@ public class AudioManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Volume") == false)
             PlayerPrefs.SetFloat("Volume", 1);
 
+        //start playing some menu background audio
+        PlayLoop(mainMenuBG);
 
-        //start playing some background audio and make sure the backgrounds are set to loop
-        if (mainMenuBG != null)
-        {
-            //set the volume to whatever is stored in PlayerPrefs
-            changeVolume(PlayerPrefs.GetFloat("Volume"));
-
-            PlayLoop(mainMenuBG);
-        }
+        //set the volume to whatever is stored in PlayerPrefs
+        changeVolume(PlayerPrefs.GetFloat("Volume"));
     }
 
     public void Stop(AudioSource audible)

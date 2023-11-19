@@ -5,7 +5,7 @@ using UnityEngine;
 public class AsteroidEvent : MonoBehaviour
 {
 
-    public float damageAmount = 50;
+    public float damageAmount = 80;
     private AudioManager audio;
 
     // Start is called before the first frame update
