@@ -83,7 +83,7 @@ public class MainMenu : MonoBehaviour
         altitudeLabel.fontSize = Screen.width / 14;
         altitudeLabel.alignment = TextAnchor.MiddleCenter;
         leaderboardStyle.fontSize = Screen.width / 17;
-        coinLabel.fontSize = Screen.width / 17;
+        coinLabel.fontSize = Screen.width / 20;
         coinLabel.alignment = TextAnchor.MiddleLeft;
         
         // Styling
@@ -172,8 +172,9 @@ public class MainMenu : MonoBehaviour
             }
             
             //show coin count
-            GUI.Box(new Rect(Screen.width / 100, Screen.height / 120, Screen.width / 8, Screen.width / 8), PlayerPrefs.GetInt("Total Coins") + "\nCoins", coinGraphic);
-
+            GUI.Box(new Rect(Screen.width / 100, Screen.height / 16, Screen.width / 10, Screen.width / 10), "", coinGraphic);
+            GUI.Label(new Rect(Screen.width / 100 + (Screen.width / 100) * 14, Screen.height / 16, Screen.width / 10, Screen.width / 10), PlayerPrefs.GetInt("Total Coins") + " Coins", coinLabel);
+            
             //show fuel level
             float fuel = GameObject.FindGameObjectWithTag("MainCamera")
                 .GetComponent<PlayfieldManager>().getFuel();
@@ -247,8 +248,8 @@ public class MainMenu : MonoBehaviour
 
             GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //show coin count
-            GUI.Box(new Rect(Screen.width / 2  - (Screen.width / 100) * 25, Screen.height / 1.25f, Screen.width / 8, Screen.width / 8), "", coinGraphic);
-            GUI.Label(new Rect(Screen.width / 2 - (Screen.width / 100) * 8, Screen.height / 1.25f, Screen.width / 8, Screen.width / 8), PlayerPrefs.GetInt("Total Coins") + " Coins", coinLabel);
+            GUI.Box(new Rect(Screen.width / 2  - (Screen.width / 100) * 22, Screen.height / 1.25f, Screen.width / 10, Screen.width / 10), "", coinGraphic);
+            GUI.Label(new Rect(Screen.width / 2 - (Screen.width / 100) * 8, Screen.height / 1.25f, Screen.width / 10, Screen.width / 10), PlayerPrefs.GetInt("Total Coins") + " Coins", coinLabel);
             
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
