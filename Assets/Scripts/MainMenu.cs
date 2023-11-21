@@ -33,6 +33,7 @@ public class MainMenu : MonoBehaviour
     public GUIStyle fuelIcon;
     public GUIStyle magnetIcon;
     public GUIStyle coinLabel;
+    public GUIStyle instructionsGraphic;
 
     int xPos = 2;
 
@@ -85,6 +86,7 @@ public class MainMenu : MonoBehaviour
         leaderboardStyle.fontSize = Screen.width / 17;
         coinLabel.fontSize = Screen.width / 20;
         coinLabel.alignment = TextAnchor.MiddleLeft;
+        instructionsGraphic.alignment = TextAnchor.MiddleCenter;
         
         // Styling
         coinLabel.normal.textColor = Color.white;
@@ -411,10 +413,9 @@ public class MainMenu : MonoBehaviour
                 audio.playAudioOnce(audio.genericClick);
                 currMenu = "MAIN MENU";
             }
-
-            GUI.Box(new Rect(Screen.width / 10, Screen.height / 15, Screen.width - (Screen.width / 10 * 2), Screen.height / 15), "How-To Title", defaultStyle);
-            GUI.Box(new Rect(Screen.width / 10, Screen.height / 15*3, Screen.width - (Screen.width / 10 * 2), Screen.height/15 *11), "How-To text", defaultStyle);
+            
             //show how to play
+            GUI.Box(new Rect(Screen.width/16, Screen.height/14, Screen.width - (Screen.width / 10), Screen.height - (Screen.height / 10)), "", instructionsGraphic);
         }
 
         if(currMenu == "CREDITS")
