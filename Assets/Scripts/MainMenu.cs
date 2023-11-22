@@ -32,6 +32,8 @@ public class MainMenu : MonoBehaviour
     public GUIStyle shieldIcon;
     public GUIStyle fuelIcon;
     public GUIStyle magnetIcon;
+    public GUIStyle coinLabel;
+    public GUIStyle instructionsGraphic;
 
     int xPos = 2;
 
@@ -82,6 +84,12 @@ public class MainMenu : MonoBehaviour
         altitudeLabel.fontSize = Screen.width / 14;
         altitudeLabel.alignment = TextAnchor.MiddleCenter;
         leaderboardStyle.fontSize = Screen.width / 17;
+        coinLabel.fontSize = Screen.width / 20;
+        coinLabel.alignment = TextAnchor.MiddleLeft;
+        instructionsGraphic.alignment = TextAnchor.MiddleCenter;
+        
+        // Styling
+        coinLabel.normal.textColor = Color.white;
 
         audio = gameObject.GetComponent<AudioManager>();
     }
@@ -166,8 +174,9 @@ public class MainMenu : MonoBehaviour
             }
             
             //show coin count
-            GUI.Box(new Rect(Screen.width / 100, Screen.height / 120, Screen.width / 8, Screen.width / 8), PlayerPrefs.GetInt("Total Coins") + "\nCoins", coinGraphic);
-
+            GUI.Box(new Rect(Screen.width / 100, Screen.height / 16, Screen.width / 10, Screen.width / 10), "", coinGraphic);
+            GUI.Label(new Rect(Screen.width / 100 + (Screen.width / 100) * 14, Screen.height / 16, Screen.width / 10, Screen.width / 10), PlayerPrefs.GetInt("Total Coins") + " Coins", coinLabel);
+            
             //show fuel level
             float fuel = GameObject.FindGameObjectWithTag("MainCamera")
                 .GetComponent<PlayfieldManager>().getFuel();
@@ -241,8 +250,8 @@ public class MainMenu : MonoBehaviour
 
             GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //show coin count
-            GUI.Box(new Rect(Screen.width / 100, Screen.height / 120, Screen.width / 8, Screen.width / 8), PlayerPrefs.GetInt("Total Coins") + "\nCoins", coinGraphic);
-
+            GUI.Box(new Rect(Screen.width / 2  - (Screen.width / 100) * 22, Screen.height / 1.25f, Screen.width / 10, Screen.width / 10), "", coinGraphic);
+            GUI.Label(new Rect(Screen.width / 2 - (Screen.width / 100) * 8, Screen.height / 1.25f, Screen.width / 10, Screen.width / 10), PlayerPrefs.GetInt("Total Coins") + " Coins", coinLabel);
             
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", backButton))
@@ -265,11 +274,12 @@ public class MainMenu : MonoBehaviour
             float xButton = xSlider - sliderStyle.horizontalSlider.fixedHeight*1.5f;
             float xIcon = Screen.width / 2 + sliderStyle.horizontalSlider.fixedWidth / 2 + sliderStyle.horizontalSlider.fixedHeight*0.5f;
             float iconSize = sliderStyle.horizontalSliderThumb.fixedHeight * 2f;
-
             
             //Shields slider
             float shieldsSlider = GUI.HorizontalSlider(new Rect(xSlider, (Screen.height / (shopItemsCount * 2 + 1)) * 3, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), PlayerPrefs.GetInt("Shield Level"), 1.0f, 10.0f, sliderStyle.horizontalSlider, sliderStyle.horizontalSliderThumb);
             GUI.Box(new Rect(xIcon, (Screen.height / (shopItemsCount * 2 + 1)) * 3 - iconSize/2, iconSize, iconSize), "", shieldIcon); // Icon
+            GUI.Label(new Rect(xButton - iconSize / 8, (Screen.height / (shopItemsCount * 2 + 1)) * 4 - sliderStyle.horizontalSlider.fixedHeight, iconSize/2, iconSize/2), "", coinGraphic);
+            GUI.Label(new Rect(xButton + iconSize / 2, (Screen.height / (shopItemsCount * 2 + 1)) * 4 - sliderStyle.horizontalSlider.fixedHeight, iconSize/2, iconSize/2), "" + levelToCost(PlayerPrefs.GetInt("Shield Level")), coinLabel);
             GUI.Label(new Rect(xSlider, (Screen.height / (shopItemsCount * 2 + 1)) * 3 - sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), "Shield Level", defaultStyle);
             //Upgrade shield button
             if (GUI.Button(new Rect(xButton, (Screen.height / (shopItemsCount * 2 + 1)) * 3, sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedHeight), "", plusButton))
@@ -281,6 +291,8 @@ public class MainMenu : MonoBehaviour
             //Fuel Tank Slider
             float fuelSlider = GUI.HorizontalSlider(new Rect(xSlider, (Screen.height / (shopItemsCount * 2 + 1)) * 5, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), PlayerPrefs.GetInt("Fuel Level"), 1.0f, 10.0f);
             GUI.Box(new Rect(xIcon, (Screen.height / (shopItemsCount * 2 + 1)) * 5 - iconSize/2, iconSize, iconSize), "", fuelIcon); // Icon
+            GUI.Label(new Rect(xButton - iconSize / 8, (Screen.height / (shopItemsCount * 2 + 1)) * 6 - sliderStyle.horizontalSlider.fixedHeight, iconSize/2, iconSize/2), "", coinGraphic);
+            GUI.Label(new Rect(xButton + iconSize / 2, (Screen.height / (shopItemsCount * 2 + 1)) * 6 - sliderStyle.horizontalSlider.fixedHeight, iconSize/2, iconSize/2), "" + levelToCost(PlayerPrefs.GetInt("Fuel Level")), coinLabel);
             GUI.Label(new Rect(xSlider, (Screen.height / (shopItemsCount * 2 + 1)) * 5 - sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), "Fuel Level", defaultStyle);
             //Upgrade fuel button
             if (GUI.Button(new Rect(xButton, (Screen.height / (shopItemsCount * 2 + 1)) * 5, sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedHeight), "", plusButton))
@@ -292,6 +304,8 @@ public class MainMenu : MonoBehaviour
             
             float magnetSlider = GUI.HorizontalSlider(new Rect(xSlider, (Screen.height / (shopItemsCount * 2 + 1)) * 7, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), PlayerPrefs.GetInt("Magnet Level"), 1.0f, 10.0f);
             GUI.Box(new Rect(xIcon, (Screen.height / (shopItemsCount * 2 + 1)) * 7 - iconSize/2, iconSize, iconSize), "", magnetIcon); // Icon
+            GUI.Label(new Rect(xButton - iconSize / 8, (Screen.height / (shopItemsCount * 2 + 1)) * 8 - sliderStyle.horizontalSlider.fixedHeight, iconSize/2, iconSize/2), "", coinGraphic);
+            GUI.Label(new Rect(xButton + iconSize / 2, (Screen.height / (shopItemsCount * 2 + 1)) * 8 - sliderStyle.horizontalSlider.fixedHeight, iconSize/2, iconSize/2), "" + levelToCost(PlayerPrefs.GetInt("Magnet Level")), coinLabel);
             GUI.Label(new Rect(xSlider, (Screen.height / (shopItemsCount * 2 + 1)) * 7 - sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), "Magnet Level", defaultStyle);
             //Upgrade magnet button
             if (GUI.Button(new Rect(xButton, (Screen.height / (shopItemsCount * 2 + 1)) * 7, sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedHeight), "", plusButton))
@@ -399,10 +413,9 @@ public class MainMenu : MonoBehaviour
                 audio.playAudioOnce(audio.genericClick);
                 currMenu = "MAIN MENU";
             }
-
-            GUI.Box(new Rect(Screen.width / 10, Screen.height / 15, Screen.width - (Screen.width / 10 * 2), Screen.height / 15), "How-To Title", defaultStyle);
-            GUI.Box(new Rect(Screen.width / 10, Screen.height / 15*3, Screen.width - (Screen.width / 10 * 2), Screen.height/15 *11), "How-To text", defaultStyle);
+            
             //show how to play
+            GUI.Box(new Rect(Screen.width/16, Screen.height/14, Screen.width - (Screen.width / 10), Screen.height - (Screen.height / 10)), "", instructionsGraphic);
         }
 
         if(currMenu == "CREDITS")
