@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayfieldManager : MonoBehaviour
 {
+    public GUIStyle autopilotStyle;
     private float gravitySpeed;
     public float moveSpeed;
     public int maxX;
@@ -18,6 +19,7 @@ public class PlayfieldManager : MonoBehaviour
     private GameObject[] obj;
     private int maxEvents = 35;
     private bool inGame = false;
+    private bool firstTouch = true;
     private GameObject userShip;
 
     //this is modified externaly from the shipManager script
@@ -25,6 +27,7 @@ public class PlayfieldManager : MonoBehaviour
 
     private void Start()
     {
+        autopilotStyle.fontSize = Screen.width / 18;
         gravitySpeed = moveSpeed;
     }
 
@@ -42,7 +45,9 @@ public class PlayfieldManager : MonoBehaviour
             CreateNewEvent();
         }
 
+        //This variable is set true by the
         inGame = true;
+        firstTouch = false;
     }
 
     public void EndRun()
@@ -65,15 +70,19 @@ public class PlayfieldManager : MonoBehaviour
         //change the screen to post game
         GetComponent<MainMenu>().currMenu = "POST GAME";
 
-
         inGame = false;
     }
     
     // Update is called once per frame
     void Update()
     {
+        if (Input.anyKey && !firstTouch)
+        {
+            firstTouch = true;
+        }
+
         //this block of code should only run during game play (refactoring)
-        if (inGame)
+        if (inGame && firstTouch)
         {
             //increase difficulty - at a constant rate?
             gravitySpeed += 0.0005f;
@@ -124,6 +133,15 @@ public class PlayfieldManager : MonoBehaviour
         Debug.DrawLine(new Vector3(maxX, spawnY, 0), new Vector3(maxX, deathY, 0));
         Debug.DrawLine(new Vector3(maxX, spawnY, 0), new Vector3(maxX*-1, spawnY, 0));
         Debug.DrawLine(new Vector3(maxX, deathY, 0), new Vector3(maxX*-1, deathY, 0));
+    }
+
+    private void OnGUI()
+    {
+         if(!firstTouch){
+            //Display autopilot warning until the first touch is made on the screen
+            GUI.Box(new Rect(Screen.width / 3.5f, Screen.height / 6 * 2, Screen.width - ( Screen.width / 3.5f*2), Screen.height / 12), "AUTOPILOT\nENGAGED", autopilotStyle);
+        }
+
     }
 
     void CreateNewEvent()

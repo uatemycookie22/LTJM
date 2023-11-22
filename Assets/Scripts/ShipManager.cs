@@ -25,6 +25,8 @@ public class ShipManager : MonoBehaviour
     private Vector3 shipVelocity;
     private float shipAltitude = 0;
 
+    private bool firstTouch = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,54 +45,56 @@ public class ShipManager : MonoBehaviour
         }
         
         PlayerPrefs.SetFloat("Max Fuel", fuelRemaining);
+
+        firstTouch = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //~~~COIN MULIPLIER~~~
-        //if the multiplier is more than 0 frames remaining, then deduct 1 frame - else - set muliplier back to 1
-        if (multFramesRemaining > 0)
-            multFramesRemaining--;
-        else
-            coinMultiplier = 1;
+        if (Input.anyKey && !firstTouch)
+            firstTouch = true;
 
-        //~~~SCORE HANDLER~~~
-        //score is incremented once per frame
-        //high score handling is not done by the ship. It is done by the playfield manager at the end of the game.
-        score += 0.1f;
-
-        //~~~SHIP CONTROLS~~~
-        //update the direction variable based on the mouse position. 
-        //direction is based on the mouse position, left or right of the screen center (range -1 to 1)
-        if (Input.mousePosition.y < Screen.height / 5 *4)  //if the touch is on the bottom 80% of the screen - fix for when the player hits the pause button but still steers
+        if (firstTouch)
         {
-            touchPosition = Input.mousePosition.x;
-            direction = (1 - (touchPosition / screenCenter)) * -1;
-            
-            //rotate the ship based on the maximum (45 degree) angle that the user can travel at
-            float shipAngle = Math.Clamp(direction * maxTurnAngle * -1, -maxTurnAngle, maxTurnAngle);
-            transform.eulerAngles = new Vector3(0, 0, shipAngle);
+            //~~~COIN MULIPLIER~~~
+            //if the multiplier is more than 0 frames remaining, then deduct 1 frame - else - set muliplier back to 1
+            if (multFramesRemaining > 0)
+                multFramesRemaining--;
+            else
+                coinMultiplier = 1;
 
-            //update the playfield manager with the new direction of the ship
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().moveAngle = direction * -1;
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ParallaxBackground>().HorizontalSpeedAndDirection = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ParallaxBackground>().VerticalSpeedAndDirection * direction;
+            //~~~SCORE HANDLER~~~
+            //score is incremented once per frame
+            //high score handling is not done by the ship. It is done by the playfield manager at the end of the game.
+            score += 0.1f;
+
+            //~~~SHIP CONTROLS~~~
+            //update the direction variable based on the mouse position. 
+            //direction is based on the mouse position, left or right of the screen center (range -1 to 1)
+            if (Input.mousePosition.y < Screen.height / 5 * 4)  //if the touch is on the bottom 80% of the screen - fix for when the player hits the pause button but still steers
+            {
+                touchPosition = Input.mousePosition.x;
+                direction = (1 - (touchPosition / screenCenter)) * -1;
+
+                //rotate the ship based on the maximum (45 degree) angle that the user can travel at
+                float shipAngle = Math.Clamp(direction * maxTurnAngle * -1, -maxTurnAngle, maxTurnAngle);
+                transform.eulerAngles = new Vector3(0, 0, shipAngle);
+
+                //update the playfield manager with the new direction of the ship
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().moveAngle = direction * -1;
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ParallaxBackground>().HorizontalSpeedAndDirection = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ParallaxBackground>().VerticalSpeedAndDirection * direction;
+            }
+
+            //~~~FUEL USAGE~~~
+            //if we run out of fuel, then end the game
+            fuelRemaining -= fuelUsageRate;
+            if (fuelRemaining <= 0)
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().EndRun();
+
+            shipVelocity = Quaternion.AngleAxis(transform.eulerAngles.z, transform.forward) * initVelocity;
+            shipAltitude += shipVelocity.y;
         }
-
-        //~~~FUEL USAGE~~~
-        //if we run out of fuel, then end the game
-        fuelRemaining -= fuelUsageRate;
-        if(fuelRemaining <= 0)
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().EndRun();
-        
-        shipVelocity = Quaternion.AngleAxis(transform.eulerAngles.z, transform.forward) * initVelocity;
-        shipAltitude += shipVelocity.y;
-    }
-
-    //do a fuel slider
-    private void OnGUI()
-    {
-        
     }
 
     //hit a coin; called by the coin itself

@@ -13,6 +13,7 @@ public class AsteroidEvent : MonoBehaviour
     {
         gameObject.name = "Asteroid";
         audio = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioManager>();
+        GetComponent<ParticleSystem>().Stop();
     }
 
 
@@ -24,8 +25,11 @@ public class AsteroidEvent : MonoBehaviour
             //decrement from fuel based on damageAmount
             audio.Stop(audio.hitAsteroid);
             audio.playAudioOnce(audio.hitAsteroid);
+            GetComponent<Collider>().enabled = false;
+            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<ParticleSystem>().Play();
             GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().fuelRemaining -= damageAmount; //handle a shield?
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }
