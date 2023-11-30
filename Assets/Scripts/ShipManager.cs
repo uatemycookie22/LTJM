@@ -21,6 +21,9 @@ public class ShipManager : MonoBehaviour
 
     public int coinMultiplier = 1;
     public int multFramesRemaining = 0;
+
+    public int magFramesRemaining = 0;
+
     private readonly Vector3 initVelocity = new Vector3(0, 1, 0);
     private Vector3 shipVelocity;
     private float shipAltitude = 0;
@@ -63,6 +66,21 @@ public class ShipManager : MonoBehaviour
                 multFramesRemaining--;
             else
                 coinMultiplier = 1;
+
+            //~~~COIN MAGNET~~~
+            if (magFramesRemaining > 0)
+                magFramesRemaining--;
+            else {
+                //GameObject[] coins = GameObject.FindGameObjectsWithTag("Event");
+                //for(int i = 0; i < coins.Length; i++)
+                //    if(coins[i].name == "Coin" )
+                //    {
+                //        Vector3 newPosition = Vector3.Lerp(transform.position,coins[i].transform.position,  5.1f);
+
+                //        // Update the object's position
+                //        coins[i].transform.position = newPosition;
+                //    }
+            }
 
             //~~~SCORE HANDLER~~~
             //score is incremented once per frame

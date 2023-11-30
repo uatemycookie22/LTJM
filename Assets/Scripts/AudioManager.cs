@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource hitFuel;         //hitting a fuel tank power up
     public AudioSource gameOver;        //"game over" or related audio
 
+    public AudioSource hitMagnet;       //hit magnet sound
+
     public void Start()
     {
         //if the volume has never been set before, then set it to 1 in playerPrefs
@@ -75,6 +77,7 @@ public class AudioManager : MonoBehaviour
         pause.volume = newVolume;
         resume.volume = newVolume;
 
+        hitMagnet.volume = newVolume;
         hitAsteroid.volume = newVolume;
         hitCoin.volume = newVolume;
         hitMultiplier.volume = newVolume;
