@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4568597480643367524}
   - component: {fileID: 1865144589013285127}
   - component: {fileID: 2474596209827332920}
-  - component: {fileID: 6537142697721686580}
+  - component: {fileID: 7136838538965218635}
   m_Layer: 0
   m_Name: Magnet
   m_TagString: Event
@@ -135,7 +135,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6537142697721686580
+--- !u!114 &7136838538965218635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,10 +144,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1646383673072695320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b34d1946771c64e8df126efdb05398, type: 3}
+  m_Script: {fileID: 11500000, guid: 46a5c3cd3e61edc4189d230f10984cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinMultiplierValue: 2
+  totalFrames: 180
 --- !u!1 &7617216789495022786
 GameObject:
   m_ObjectHideFlags: 0

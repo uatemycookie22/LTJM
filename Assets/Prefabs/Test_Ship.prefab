@@ -213,6 +213,7 @@ MonoBehaviour:
   score: 0
   coinMultiplier: 1
   multFramesRemaining: 0
+  magFramesRemaining: 0
 --- !u!54 &1883721263655076033
 Rigidbody:
   m_ObjectHideFlags: 0
