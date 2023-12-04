@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 9132269585101501994}
   - component: {fileID: 6515202471210249690}
   - component: {fileID: 2924345764694960987}
+  - component: {fileID: 2366812772226563786}
   m_Layer: 0
   m_Name: asteroid3_LOD0
   m_TagString: Event
@@ -114,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0869f2ab127574291048782f10d2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 80
+  damageAmount: 110
+  blowUp: 0
 --- !u!54 &4323049786374859868
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -159,7 +161,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 1.66
   m_Center: {x: -0.08763849, y: 0.0077008586, z: -0.07396953}
@@ -5016,3 +5018,25 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!64 &2366812772226563786
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9125268794349760900}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 5f67db069f8983f49bdeff2fdad26975, type: 3}

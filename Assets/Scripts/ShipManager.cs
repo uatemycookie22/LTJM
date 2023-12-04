@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ShipManager : MonoBehaviour
 {
+    public GUIStyle autopilotStyle;
 
     //direction will range from -1 to 1 based on the position of the finger (or mouse)
     public float direction;
@@ -28,11 +29,17 @@ public class ShipManager : MonoBehaviour
     private Vector3 shipVelocity;
     private float shipAltitude = 0;
 
-    private bool firstTouch = false;
+    public bool firstTouch = false;
+    private Vector3 spawnPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnPosition = transform.position;
+        transform.position = new Vector3(transform.position.x, transform.position.y - 10, transform.position.z);
+
+        autopilotStyle.fontSize = Screen.width / 18;
+
         screenCenter = Screen.width / 2;
         //Go to the PlayerPrefs and get the max fuel amount
         fuelRemaining = defaultFuelAmount + (float)Math.Pow(PlayerPrefs.GetInt("Fuel Level"), 2) * 60;
@@ -55,8 +62,13 @@ public class ShipManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKey && !firstTouch)
-            firstTouch = true;
+        //move to the spawn position if its not there yet
+        if (Vector3.Distance(transform.position, spawnPosition) > 0.1f)
+            transform.position = Vector3.Lerp(transform.position, spawnPosition, 0.1f);
+        else
+            if (Input.anyKey && !firstTouch)
+                firstTouch = true;
+
 
         if (firstTouch)
         {
@@ -113,6 +125,16 @@ public class ShipManager : MonoBehaviour
             shipVelocity = Quaternion.AngleAxis(transform.eulerAngles.z, transform.forward) * initVelocity;
             shipAltitude += shipVelocity.y;
         }
+    }
+
+    private void OnGUI()
+    {
+        if (!firstTouch)
+        {
+            //Display autopilot warning until the first touch is made on the screen
+            GUI.Box(new Rect(Screen.width / 3.5f, Screen.height / 6 * 2, Screen.width - (Screen.width / 3.5f * 2), Screen.height / 12), "AUTOPILOT\nENGAGED", autopilotStyle);
+        }
+
     }
 
     //hit a coin; called by the coin itself
