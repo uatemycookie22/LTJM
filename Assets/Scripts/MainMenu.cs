@@ -81,15 +81,13 @@ public class MainMenu : MonoBehaviour
         titleLogo.border.top = Screen.width / 20;
         titleLogo.border.bottom = Screen.width / 20;
         settingsButton.alignment = TextAnchor.UpperRight;
-        altitudeLabel.fontSize = Screen.width / 14;
+        altitudeLabel.fontSize = Screen.width / 20;
         altitudeLabel.alignment = TextAnchor.MiddleCenter;
         leaderboardStyle.fontSize = Screen.width / 17;
-        coinLabel.fontSize = Screen.width / 20;
+        coinLabel.normal.textColor = Color.black;
+        coinLabel.fontSize = Screen.width / 25;
         coinLabel.alignment = TextAnchor.MiddleLeft;
         instructionsGraphic.alignment = TextAnchor.MiddleCenter;
-        
-        // Styling
-        coinLabel.normal.textColor = Color.white;
 
         audio = gameObject.GetComponent<AudioManager>();
     }
@@ -167,15 +165,17 @@ public class MainMenu : MonoBehaviour
             audio.PlayLoop(audio.inGameBG);
 
             //Back Button
-            if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, buf, Screen.width / 10, Screen.width / 10), "", pauseButton))
+            if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, Screen.height / 25 + buf, Screen.width / 10, Screen.width / 10), "", pauseButton))
             {
                 audio.playAudioOnce(audio.pause);
                 currMenu = "PAUSE";
             }
-            
+
             //show coin count
-            GUI.Box(new Rect(Screen.width / 100, Screen.height / 16, Screen.width / 10, Screen.width / 10), "", coinGraphic);
-            GUI.Label(new Rect(Screen.width / 100 + (Screen.width / 100) * 14, Screen.height / 16, Screen.width / 10, Screen.width / 10), PlayerPrefs.GetInt("Total Coins") + " Coins", coinLabel);
+            coinLabel.alignment = TextAnchor.MiddleCenter;
+            coinLabel.wordWrap = true;
+            GUI.Box(new Rect(Screen.width / 100, Screen.height - (Screen.width/7.0f) - (Screen.width / 100), Screen.width / 7.0f, Screen.width / 7.0f), "", coinGraphic);
+            GUI.Label(new Rect(Screen.width / 100, Screen.height - (Screen.width/7.0f) - (Screen.width / 100), Screen.width / 7.0f, Screen.width / 7.0f), PlayerPrefs.GetInt("Total Coins") + " Coins", coinLabel);
             
             //show fuel level
             float fuel = GameObject.FindGameObjectWithTag("MainCamera")
@@ -184,14 +184,13 @@ public class MainMenu : MonoBehaviour
             fuel = 1 - (fuel / PlayerPrefs.GetFloat("Max Fuel"));
 
             FuelSliderStyle.horizontalSliderThumb.fixedWidth = Screen.width / 16;
-            float fuelSlider = GUI.HorizontalSlider(new Rect(0, Screen.height-(Screen.height / 25), Screen.width, Screen.height/25), fuel, 0.0f, 1.0f);
+            float fuelSlider = GUI.HorizontalSlider(new Rect(0, 0, Screen.width, Screen.height/25), fuel, 0.0f, 1.0f);
 
-            //show elevation
-            int altitude = (int)GameObject.FindGameObjectWithTag("MainCamera")
-                .GetComponent<PlayfieldManager>().getAltitude();
+            //show altitude
+            int altitude = (int)GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().getAltitude();
             altitude /= 10;
             
-            GUI.Box(new Rect(Screen.width / 10, Screen.height / 120, Screen.width / 10 * 8 , Screen.width / 8), "Altitude: " + altitude, altitudeLabel);
+            GUI.Box(new Rect(Screen.width / 7, Screen.height - (Screen.height / 18), Screen.width/7*5 , Screen.height/18), "Altitude: " + altitude, altitudeLabel);
 
             //show pause button
 

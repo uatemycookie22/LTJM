@@ -17,7 +17,8 @@ public class PlayfieldManager : MonoBehaviour
 
     //an event can be any object that the user will interact with (asteroids, coins, power-ups)
     private GameObject[] obj;
-    private int maxEvents = 35;
+    private int maxEvents = 20;
+    private float minProximity = 3.0f;
     private bool inGame = false;
     private bool firstTouch = true;
     private GameObject userShip;
@@ -165,13 +166,12 @@ public class PlayfieldManager : MonoBehaviour
     bool ProximityCheck(GameObject newEvent)
     {
         //how close is too close? in units
-        float tooClose = 2.0f;
         foreach (GameObject o in obj) {
-            if (Vector3.Distance(o.transform.position, newEvent.transform.position) < tooClose)
+            if (Vector3.Distance(o.transform.position, newEvent.transform.position) < minProximity)
                 return false;
-            if (newEvent.transform.position.x < maxX*-1 + (tooClose/2))
+            if (newEvent.transform.position.x < maxX*-1 + (minProximity / 2))
                 return false;
-            if (newEvent.transform.position.x > maxX - (tooClose/2))
+            if (newEvent.transform.position.x > maxX - (minProximity / 2))
                 return false;
         }
         return true;
