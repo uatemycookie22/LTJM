@@ -34,9 +34,12 @@ public class MainMenu : MonoBehaviour
     public GUIStyle magnetIcon;
     public GUIStyle coinLabel;
     public GUIStyle instructionsGraphic;
+    public GUIStyle scoresStyle;
 
     int xPos = 2;
 
+    public int coinsCollected = 0;
+    public int altitude = 0;
     public string currMenu;
     private float volumeSlider = 0.5f;
 
@@ -88,6 +91,9 @@ public class MainMenu : MonoBehaviour
         coinLabel.fontSize = Screen.width / 25;
         coinLabel.alignment = TextAnchor.MiddleLeft;
         instructionsGraphic.alignment = TextAnchor.MiddleCenter;
+        scoresStyle.fontSize = Screen.width / 17;
+        scoresStyle.alignment = TextAnchor.MiddleCenter;
+        scoresStyle.normal.textColor = Color.white;
 
         audio = gameObject.GetComponent<AudioManager>();
     }
@@ -187,7 +193,7 @@ public class MainMenu : MonoBehaviour
             float fuelSlider = GUI.HorizontalSlider(new Rect(0, 0, Screen.width, Screen.height/25), fuel, 0.0f, 1.0f);
 
             //show altitude
-            int altitude = (int)GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().getAltitude();
+            altitude = (int)GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayfieldManager>().getAltitude();
             altitude /= 10;
             
             GUI.Box(new Rect(Screen.width / 7, Screen.height - (Screen.height / 18), Screen.width/7*5 , Screen.height/18), "Altitude: " + altitude, altitudeLabel);
@@ -199,12 +205,30 @@ public class MainMenu : MonoBehaviour
         //this menu is called from the Playfield Manager
         if(currMenu == "POST GAME")
         {
+            float boxTop = (Screen.height - (Screen.height / 2.5f)) /2;
+            float boxLeft = (Screen.width - (Screen.height / 2.5f)) / 2;
+            float boxWidthHeight = Screen.height / 2.5f;
+
+            //box
+            GUI.Box(new Rect(boxLeft, boxTop, boxWidthHeight, boxWidthHeight), "", titleLogo);
+
+            //coins collected
+            GUI.Box(new Rect(boxLeft + (boxWidthHeight / 4), boxTop + (boxWidthHeight / 5 * 2), boxWidthHeight / 2, boxWidthHeight / 6), "COINS COLLECTED: " + coinsCollected.ToString(), scoresStyle);
+
+            //alltitude reached
+            GUI.Box(new Rect(boxLeft + (boxWidthHeight / 4), boxTop + (boxWidthHeight / 5 * 1), boxWidthHeight / 2, boxWidthHeight / 6), "ALTITUDE: " + altitude.ToString(), scoresStyle);
+
+            //continue button
+            if (GUI.Button(new Rect(boxLeft + (boxWidthHeight/4), boxTop + (boxWidthHeight/4*3), boxWidthHeight/2, boxWidthHeight/6), "CONTINUE", playButton))
+            {
+                currMenu = "MAIN MENU";
+                audio.playAudioOnce(audio.genericClick);
+            }
+
             audio.Stop(audio.inGameBG);
             audio.playAudioOnce(audio.gameOver);
             audio.PlayLoop(audio.mainMenuBG);
             GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
-            //go to the main menu until stuff is added to this screen
-            currMenu = "MAIN MENU";
         }
 
         //Pause the game by disabling the playfield manager script

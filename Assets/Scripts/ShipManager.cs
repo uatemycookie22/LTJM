@@ -55,6 +55,7 @@ public class ShipManager : MonoBehaviour
         }
         
         PlayerPrefs.SetFloat("Max Fuel", fuelRemaining);
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainMenu>().coinsCollected = 0;
 
         firstTouch = false;
     }
@@ -143,6 +144,9 @@ public class ShipManager : MonoBehaviour
         //write to memory that a coin has been added to the pot
         //multiply coinAmount by coin multiplier
         PlayerPrefs.SetInt("Total Coins", PlayerPrefs.GetInt("Total Coins") + (coinAmount * coinMultiplier));
+
+        //tell the menu script that a coin was collected. Total run coins to be displayed after game
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainMenu>().coinsCollected++;
     }
 
     public Vector3 getVelocity()
