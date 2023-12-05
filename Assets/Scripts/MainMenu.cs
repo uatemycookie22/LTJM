@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public GUIStyle titleLogo;
     public GUIStyle playButton;
     public GUIStyle shopButton;
+    public GUIStyle shopNames;
     public GUIStyle profileButton;
     public GUIStyle instructionsButton;
     public GUIStyle scoreButton;
@@ -63,6 +64,8 @@ public class MainMenu : MonoBehaviour
         //set all the font sizes based on screen size
         defaultStyle.alignment = TextAnchor.MiddleCenter;
         defaultStyle.fontSize = Screen.width / 17;
+        shopNames.fontSize = Screen.width / 17;
+        shopNames.alignment = TextAnchor.MiddleCenter;
         playButton.alignment = TextAnchor.MiddleCenter;
         playButton.fontSize = Screen.width / 17;
         shopButton.alignment = TextAnchor.MiddleCenter;
@@ -87,7 +90,6 @@ public class MainMenu : MonoBehaviour
         altitudeLabel.fontSize = Screen.width / 20;
         altitudeLabel.alignment = TextAnchor.MiddleCenter;
         leaderboardStyle.fontSize = Screen.width / 17;
-        coinLabel.normal.textColor = Color.black;
         coinLabel.fontSize = Screen.width / 25;
         coinLabel.alignment = TextAnchor.MiddleLeft;
         instructionsGraphic.alignment = TextAnchor.MiddleCenter;
@@ -166,6 +168,7 @@ public class MainMenu : MonoBehaviour
         if (currMenu == "INGAME")
         {
             GUI.skin = FuelSliderStyle;
+            coinLabel.normal.textColor = Color.black;
 
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, Screen.height / 25 + buf, Screen.width / 10, Screen.width / 10), "", pauseButton))
@@ -265,6 +268,7 @@ public class MainMenu : MonoBehaviour
         {
             GUI.skin = sliderStyle;
 
+            coinLabel.normal.textColor = Color.white;
             GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
             //show coin count
             GUI.Box(new Rect(Screen.width / 2  - (Screen.width / 100) * 22, Screen.height / 1.25f, Screen.width / 10, Screen.width / 10), "", coinGraphic);
@@ -297,7 +301,7 @@ public class MainMenu : MonoBehaviour
             GUI.Box(new Rect(xIcon, (Screen.height / (shopItemsCount * 2 + 1)) * 3 - iconSize/2, iconSize, iconSize), "", shieldIcon); // Icon
             GUI.Label(new Rect(xButton - iconSize / 8, (Screen.height / (shopItemsCount * 2 + 1)) * 4 - sliderStyle.horizontalSlider.fixedHeight, iconSize/2, iconSize/2), "", coinGraphic);
             GUI.Label(new Rect(xButton + iconSize / 2, (Screen.height / (shopItemsCount * 2 + 1)) * 4 - sliderStyle.horizontalSlider.fixedHeight, iconSize/2, iconSize/2), "" + levelToCost(PlayerPrefs.GetInt("Shield Level")), coinLabel);
-            GUI.Label(new Rect(xSlider, (Screen.height / (shopItemsCount * 2 + 1)) * 3 - sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), "Shield Level", defaultStyle);
+            GUI.Label(new Rect(xSlider, (Screen.height / (shopItemsCount * 2 + 1)) * 3 - sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), "Shield Level", shopNames);
             //Upgrade shield button
             if (GUI.Button(new Rect(xButton, (Screen.height / (shopItemsCount * 2 + 1)) * 3, sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedHeight), "", plusButton))
             {
@@ -310,7 +314,7 @@ public class MainMenu : MonoBehaviour
             GUI.Box(new Rect(xIcon, (Screen.height / (shopItemsCount * 2 + 1)) * 5 - iconSize/2, iconSize, iconSize), "", fuelIcon); // Icon
             GUI.Label(new Rect(xButton - iconSize / 8, (Screen.height / (shopItemsCount * 2 + 1)) * 6 - sliderStyle.horizontalSlider.fixedHeight, iconSize/2, iconSize/2), "", coinGraphic);
             GUI.Label(new Rect(xButton + iconSize / 2, (Screen.height / (shopItemsCount * 2 + 1)) * 6 - sliderStyle.horizontalSlider.fixedHeight, iconSize/2, iconSize/2), "" + levelToCost(PlayerPrefs.GetInt("Fuel Level")), coinLabel);
-            GUI.Label(new Rect(xSlider, (Screen.height / (shopItemsCount * 2 + 1)) * 5 - sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), "Fuel Level", defaultStyle);
+            GUI.Label(new Rect(xSlider, (Screen.height / (shopItemsCount * 2 + 1)) * 5 - sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), "Fuel Level", shopNames);
             //Upgrade fuel button
             if (GUI.Button(new Rect(xButton, (Screen.height / (shopItemsCount * 2 + 1)) * 5, sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedHeight), "", plusButton))
             {
@@ -323,7 +327,7 @@ public class MainMenu : MonoBehaviour
             GUI.Box(new Rect(xIcon, (Screen.height / (shopItemsCount * 2 + 1)) * 7 - iconSize/2, iconSize, iconSize), "", magnetIcon); // Icon
             GUI.Label(new Rect(xButton - iconSize / 8, (Screen.height / (shopItemsCount * 2 + 1)) * 8 - sliderStyle.horizontalSlider.fixedHeight, iconSize/2, iconSize/2), "", coinGraphic);
             GUI.Label(new Rect(xButton + iconSize / 2, (Screen.height / (shopItemsCount * 2 + 1)) * 8 - sliderStyle.horizontalSlider.fixedHeight, iconSize/2, iconSize/2), "" + levelToCost(PlayerPrefs.GetInt("Magnet Level")), coinLabel);
-            GUI.Label(new Rect(xSlider, (Screen.height / (shopItemsCount * 2 + 1)) * 7 - sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), "Magnet Level", defaultStyle);
+            GUI.Label(new Rect(xSlider, (Screen.height / (shopItemsCount * 2 + 1)) * 7 - sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedWidth, sliderStyle.horizontalSlider.fixedHeight), "Magnet Level", shopNames);
             //Upgrade magnet button
             if (GUI.Button(new Rect(xButton, (Screen.height / (shopItemsCount * 2 + 1)) * 7, sliderStyle.horizontalSlider.fixedHeight, sliderStyle.horizontalSlider.fixedHeight), "", plusButton))
             {
