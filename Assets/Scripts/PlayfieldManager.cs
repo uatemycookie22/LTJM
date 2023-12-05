@@ -20,12 +20,15 @@ public class PlayfieldManager : MonoBehaviour
     private float minProximity = 3.0f;
     private bool inGame = false;
     private GameObject userShip;
+    private AudioManager audio;
 
     //this is modified externaly from the shipManager script
     public float moveAngle;
 
     private void Start()
     {
+
+        audio = gameObject.GetComponent<AudioManager>();
         gravitySpeed = moveSpeed;
     }
 
@@ -42,6 +45,11 @@ public class PlayfieldManager : MonoBehaviour
             obj = GameObject.FindGameObjectsWithTag("Event");
             CreateNewEvent();
         }
+
+        //start in game music
+        audio.Stop(audio.mainMenuBG);
+        audio.PlayLoop(audio.inGameBG);
+
 
         //This variable is set true by the
         inGame = true;
@@ -66,6 +74,11 @@ public class PlayfieldManager : MonoBehaviour
 
         //change the screen to post game
         GetComponent<MainMenu>().currMenu = "POST GAME";
+
+        //end game audio
+        audio.playAudioOnce(audio.gameOver);
+        audio.Stop(audio.inGameBG);
+        audio.PlayLoop(audio.mainMenuBG);
 
         inGame = false;
     }

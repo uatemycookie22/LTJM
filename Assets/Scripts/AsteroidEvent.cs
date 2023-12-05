@@ -9,6 +9,8 @@ public class AsteroidEvent : MonoBehaviour
     private AudioManager audio;
     public bool blowUp = false;
 
+    private bool hasBlownUp = false;
+
     private float targetblowScale;
     private float blowSpeed = 0.4f;
 
@@ -23,6 +25,7 @@ public class AsteroidEvent : MonoBehaviour
         audio = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioManager>();
         GetComponent<ParticleSystem>().Stop();
         blowUp = false;
+        hasBlownUp = false;
     }
 
 
@@ -33,15 +36,19 @@ public class AsteroidEvent : MonoBehaviour
             {
                 //fix the scaling so that the particle system still looks right (it also gets scaled)
                 transform.localScale = origScale;
+                GetComponent<ParticleSystem>().Play();
+                GetComponent<MeshRenderer>().enabled = false;
+                GetComponent<Collider>().enabled = false;
 
                 //When the event hits the player: do something
                 //decrement from fuel based on damageAmount
-                audio.Stop(audio.hitAsteroid);
-                audio.playAudioOnce(audio.hitAsteroid);
-                GetComponent<Collider>().enabled = false;
-                GetComponent<MeshRenderer>().enabled = false;
-                GetComponent<ParticleSystem>().Play();
-                GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().fuelRemaining -= damageAmount; //handle a shield?
+                if (hasBlownUp == false)
+                {
+                    audio.Stop(audio.hitAsteroid);
+                    audio.playAudioOnce(audio.hitAsteroid);
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<ShipManager>().fuelRemaining -= damageAmount; //handle a shield?
+                    hasBlownUp = true;
+                }
                 //Destroy(gameObject);
 
                 blowUp = false;

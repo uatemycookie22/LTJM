@@ -167,9 +167,6 @@ public class MainMenu : MonoBehaviour
         {
             GUI.skin = FuelSliderStyle;
 
-            audio.Stop(audio.inGameBG);
-            audio.PlayLoop(audio.inGameBG);
-
             //Back Button
             if (GUI.Button(new Rect(Screen.width / 10 * 9 - buf, Screen.height / 25 + buf, Screen.width / 10, Screen.width / 10), "", pauseButton))
             {
@@ -224,10 +221,7 @@ public class MainMenu : MonoBehaviour
                 currMenu = "MAIN MENU";
                 audio.playAudioOnce(audio.genericClick);
             }
-
-            audio.Stop(audio.inGameBG);
-            audio.playAudioOnce(audio.gameOver);
-            audio.PlayLoop(audio.mainMenuBG);
+            
             GUI.Box(new Rect(-Screen.width / 2, 0, Screen.height * menuBgAspectRatio, Screen.height), "", menuBackground); // Background
         }
 
